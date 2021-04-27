@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:key="preferencias_generales" >
+    
+	<PreferenceCategory android:title="@string/txt_general_opciones_generales">
+	    
+	    <!-- <ListPreference
+		    android:key="tipo_vista_menu"
+		    android:title="@string/txt_general_tipo_menu"
+		    android:summary="@string/txt_general_tipo_menu_descripcion"
+		    android:entries="@array/opcion_general_vista_menu"
+		    android:entryValues="@array/opcion_general_vista_menu_valores"
+		    android:defaultValue="1"/> -->
+	    
+	     <ListPreference
+		    android:key="tiempo_sesion_segundos"
+		    android:title="@string/txt_general_tiempo_sesion"
+		    android:summary="@string/txt_general_tiempo_sesion_descripcion"
+		    android:entries="@array/opcion_general_tiempo_sesion"
+		    android:entryValues="@array/opcion_general_tiempo_sesion_valores"
+		    android:defaultValue="60"/>
+	     
+	     <ListPreference
+		    android:key="numero_sesiones"
+		    android:title="@string/txt_general_numero_sesiones"
+		    android:summary="@string/txt_general_numero_sesiones_descripcion"
+		    android:entries="@array/opcion_general_numero_sesiones"
+		    android:entryValues="@array/opcion_general_numero_sesiones_valores"
+		    android:defaultValue="15"/>
+	     
+	     <CheckBoxPreference
+   		 	android:key="sonido"
+    		android:title="@string/txt_sonido"
+    		android:summary="@string/txt_sonido_descripcion"
+    		android:enabled="true"/>
+	     
+	     <!-- <ListPreference
+		    android:key="contador_seleccion"
+		    android:title="@string/txt_general_tiempo_seleccion"
+		    android:summary="@string/txt_general_tiempo_seleccion_descripcion"
+		    android:entries="@array/opcion_general_tiempo_seleccion"
+		    android:entryValues="@array/opcion_general_tiempo_seleccion_valores"
+		    android:defaultValue="10"/>
+	     
+	     <ListPreference
+		    android:key="porcentaje_seleccion"
+		    android:title="@string/txt_general_porcentaje_seleccion"
+		    android:summary="@string/txt_general_porcentaje_seleccion_descripcion"
+		    android:entries="@array/opcion_general_porcentaje_seleccion"
+		    android:entryValues="@array/opcion_general_porcentaje_seleccion_valores"
+		    android:defaultValue="50"/>
+	     
+	     <CheckBoxPreference
+   		 	android:key="lugar_boton_seleccionado"
+    		android:title="@string/txt_general_lugar_seleccion"
+    		android:summary="@string/txt_general_lugar_seleccion_descripcion"
+    		android:enabled="true"/> -->
+	     
+	    
+        <!-- <CheckBoxPreference
+            android:key="aspecto_visual"
+            android:title="Preferencia 1"
+            android:summary="Descripción de la preferencia 1" />
+        <EditTextPreference
+            android:key="opcion2"
+            android:title="Preferencia 2"
+            android:summary="Descripción de la preferencia 2"
+            android:dialogTitle="Introduce valor" /> -->
+    </PreferenceCategory> 
+
+</PreferenceScreen>

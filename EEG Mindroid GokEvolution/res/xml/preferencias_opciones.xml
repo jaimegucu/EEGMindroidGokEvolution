@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:key="preferencias_dificultad" >
+    
+	<PreferenceCategory android:title="@string/txt_general_opciones_generales">
+		
+	    <CheckBoxPreference
+   		 	android:key="sonidos"
+    		android:title="@string/txt_sonido"
+    		android:summary="@string/txt_sonido_descripcion"
+    		android:enabled="true"
+    		android:defaultValue="true"/>
+	    <CheckBoxPreference
+   		 	android:key="musica_fondo"
+    		android:title="@string/txt_musica"
+    		android:summary="@string/txt_musica_descripcion"
+    		android:enabled="true"
+    		android:defaultValue="true"/>
+	     <ListPreference
+		    android:key="dificultad"
+		    android:title="@string/txt_general_dificultad"
+		    android:summary="@string/txt_general_dificultad_descripcion"
+		    android:entries="@array/opcion_dificultad_tipos"
+		    android:entryValues="@array/opcion_dificultad_tipos_valores"
+		    android:defaultValue="0"/>
+	     <ListPreference
+		    android:key="musica_fondo_tipos"
+		    android:title="@string/txt_general_musica"
+		    android:summary="@string/txt_general_musica_descripcion"
+		    android:entries="@array/opcion_musica_tipos"
+		    android:entryValues="@array/opcion_musica_tipos_valores"
+		    android:defaultValue="0"/>
+    </PreferenceCategory> 
+
+</PreferenceScreen>

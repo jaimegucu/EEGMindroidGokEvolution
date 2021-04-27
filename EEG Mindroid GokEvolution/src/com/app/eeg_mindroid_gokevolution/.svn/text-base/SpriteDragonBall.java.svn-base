@@ -1,0 +1,39 @@
+package com.app.eeg_mindroid;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+
+public class SpriteDragonBall {
+	private DragonBallSurfaceView gameView;
+	private Bitmap bmp;
+	// Para qeu aparezca la imagen con la altura correcta segun el tamaño del sprite
+	private int alturaEscalada;
+
+	public SpriteDragonBall(DragonBallSurfaceView gameView, Bitmap bmp,
+			int tamañoSprite) {
+		// NO puedo usar aqui gameView para saber las coordenadas :(
+		this.gameView = gameView;
+		switch (tamañoSprite) {
+		case 0:
+			// Con esto ampliamos x2 el tamaño del sprite (inicial 60x100)
+			this.bmp = Bitmap.createScaledBitmap(bmp, 120, 200, true);
+			alturaEscalada = 16;
+			break;
+		case 1:
+			// x2.5
+			this.bmp = Bitmap.createScaledBitmap(bmp, 150, 250, true);
+			alturaEscalada = 8;
+			break;
+		case 2:
+			// x3
+			this.bmp = Bitmap.createScaledBitmap(bmp, 180, 300, true);
+			alturaEscalada = 4;
+			break;
+		}
+	}
+
+	public void dibujaSprite(Canvas canvas) {
+		canvas.drawBitmap(bmp, (gameView.getWidth() / 2) - (bmp.getWidth() / 2),
+				(gameView.getHeight() / 2) - (bmp.getHeight() / alturaEscalada), null);
+	}
+}

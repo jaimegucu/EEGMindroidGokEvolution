@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ESTA VISTA SE USARA COMO BASE PARA LAS DEMAS QUE COMPARTAN LOS MISMOS WIDGETS (NO MODIFICAR) -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+    android:background="@android:color/darker_gray">
+	
+     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+ 
+	        <ImageView
+	            android:id="@+id/imagenCalidadConexion"
+	            android:layout_width="18dp"
+	            android:layout_height="18dp"
+	            android:scaleType="fitXY"
+	            android:layout_gravity="left"
+	            android:src="@drawable/circle_red"/>
+
+	        <TextView
+	            android:id="@+id/textoPorcentajeBateria"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="6dp"
+	            android:layout_marginRight="0.5dp"
+	            android:textColor="@android:color/black"
+	            android:text="@string/porcentaje_inicial_bateria" />
+
+	        <ImageView
+	            android:id="@+id/imagenPorcentajeBateria"
+	            android:layout_width="20dp"
+	            android:layout_height="16dp"
+	            android:scaleType="fitXY"
+	            android:src="@drawable/bateria100_92"/>
+	    </LinearLayout>
+	    
+        <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:orientation="horizontal" >
+		    <LinearLayout
+		        android:layout_width="30dp"
+		        android:layout_height="match_parent"
+		        android:orientation="vertical" 
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="8dp">
+			
+		        <com.app.eeg_mindroid.VerticalProgressBar 
+			        style="?android:attr/progressBarStyleHorizontal"
+			        android:id="@+id/progressbarConcentracion"
+			        android:layout_width="match_parent"
+			        android:layout_height="fill_parent" 
+			        android:progressDrawable="@drawable/menu_progressbar_concentracion"
+			        android:layout_marginTop="8dp"
+			        android:layout_marginBottom="3dp"
+			        android:max="100"
+			        />
+		    </LinearLayout>
+	
+		    <LinearLayout
+		        android:layout_width="30dp"
+		        android:layout_height="match_parent"
+		        android:orientation="vertical"
+		        android:layout_marginRight="1dp">
+		        
+		        <com.app.eeg_mindroid.VerticalProgressBar 
+			        style="?android:attr/progressBarStyleHorizontal"
+			        android:id="@+id/progressbarSeleccion"
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent" 
+			        android:progressDrawable="@drawable/menu_progressbar_seleccion"
+			        android:layout_marginTop="8dp"
+			        android:layout_marginBottom="3dp"
+			        android:max="100"
+			        />
+			
+		    </LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+	
+    <LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:orientation="vertical" >
+		<View
+			android:layout_width="1dp"
+			android:layout_height="match_parent"
+			android:background="@android:color/white" 
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"/>
+	</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp">
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:gravity="right"
+		    android:orientation="horizontal"
+		    android:layout_marginBottom="5dp" >
+
+			<TextView
+			    android:id="@+id/textoSegundosSeleccion"
+			    android:layout_width="wrap_content"
+			    android:layout_height="match_parent"
+			    android:gravity="fill_vertical"
+			    android:layout_marginRight="10dp"
+			    android:textColor="@android:color/black"
+			    android:textSize="25sp"
+			    android:text="@string/segundos_seleccion" />
+
+			<ImageView
+		        android:id="@+id/imagenMindClock"
+		        android:layout_width="27dp"
+		        android:layout_height="34dp"
+		        android:scaleType="fitXY"
+		        android:layout_gravity="right"        
+		        android:src="@drawable/mind_clock" />
+		</LinearLayout>
+
+		<EditText
+		    android:id="@+id/edtxt_marcar_tlf_introducir"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginBottom="2dp"
+		    android:gravity="center"
+		    android:hint="@string/txt_marcar_tlf_introduzca_tlf"
+		    android:inputType="phone"
+		    android:padding="0dp"
+		    android:singleLine="true"
+		    android:textSize="30sp" >
+
+		    <requestFocus />
+		</EditText>
+		
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:gravity="center|top"
+		    android:orientation="horizontal" >
+			
+		    <LinearLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/fondo_botones_llamada_telefono"
+				android:layout_marginTop="10dp"
+		        android:orientation="horizontal" >
+
+			    <TableLayout
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content" >
+
+			        <TableRow
+			            android:id="@+id/filaTelefonica1"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="10dp"
+			            android:layout_marginRight="10dp" >
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_bajar_fila1"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_bajar" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_uno"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_uno" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_dos"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_dos" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_tres"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_tres" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_final"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_final" />
+			        </TableRow>
+
+			        <TableRow
+			            android:id="@+id/filaTelefonica2"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="10dp"
+			            android:layout_marginRight="10dp" >
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_bajar_fila2"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_bajar" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_cuatro"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_cuatro" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_cinco"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_cinco" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_seis"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_seis" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_subir_fila2"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_subir" />
+			        </TableRow>
+
+			        <TableRow
+			            android:id="@+id/filaTelefonica3"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="10dp"
+			            android:layout_marginRight="10dp" >
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_inicio"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_inicio" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_siete"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_siete" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_ocho"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_ocho" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_nueve"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_nueve" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_subir_fila3"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_subir" />
+			        </TableRow>
+
+			        <TableRow
+			            android:id="@+id/filaTelefonica4"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="10dp"
+			            android:layout_marginRight="10dp" >
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_llamar"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="Llamar" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_asterisco"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_asterisco" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_cero"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_cero" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_almohadilla"
+			                style="@style/BotonesNumerosMarcarTlf"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="@string/btn_marcar_tlf_almohadilla" />
+
+			            <Button
+			                android:id="@+id/btn_marcar_tlf_borrar"
+			                android:layout_width="wrap_content"
+			                android:layout_height="match_parent"
+			                android:layout_marginBottom="1dp"
+			                android:layout_marginLeft="1dp"
+			                android:layout_marginRight="1dp"
+			                android:layout_marginTop="1dp"
+			                android:background="@drawable/boton_llamada_telefono"
+			                android:text="Borrar" />
+			        </TableRow>
+			    </TableLayout>
+
+	        </LinearLayout>
+
+		    <LinearLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="228dp"
+		        android:layout_marginLeft="5dp"
+		        android:gravity="bottom|right"
+		        android:orientation="vertical" >
+
+		        <Button
+		            android:id="@+id/btn_marcar_tlf_salir"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/boton_menu"
+		            android:paddingLeft="21dp"
+		            android:paddingRight="21dp"
+		            android:paddingTop="5dp"
+		            android:paddingBottom="5dp"
+		            android:layout_marginBottom="20dp"
+		            android:text="@string/btn_marcar_tlf_salir" />
+
+		    </LinearLayout>
+
+		</LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

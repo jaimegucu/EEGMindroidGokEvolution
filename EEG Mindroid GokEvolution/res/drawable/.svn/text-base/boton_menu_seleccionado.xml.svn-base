@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"> 
+	<stroke android:width="4dp" android:color="#FE2E2E" /> 
+	<!-- <solid android:color="#DED6D6" />  -->
+	<gradient
+            android:startColor="#EBEAEA"
+            android:endColor="#F2F5A9"
+            android:angle="270" />
+	<padding android:left="14dp" android:top="14dp" 
+	        android:right="14dp" android:bottom="14dp" /> 
+	<corners android:radius="20dp" /> 
+</shape>
+
+<!-- CELESTITO
+ android:startColor="#DEFFFE"
+ android:endColor="#76FFFB"-->

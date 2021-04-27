@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6bb37c5e-8556-4923-9e5c-f681810f3eb3" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.ltk.core.refactoring.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria100_92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria13_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria21_14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria28_22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria35_29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria43_36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria51_44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria59_52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria67_60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria6_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria75_68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria83_76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/bateria91_84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_esperando1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_esperando2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_esperando3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_inicio1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_inicio2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_teletransporte1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_teletransporte2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_teletransporte3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokunormal_teletransporte4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_cansado1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_cansado2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_cansado3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_inicio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_reposo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_reposo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_reposo3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_transformacion1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_transformacion2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_transformacion3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_transformacion4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_transformacion5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/gokussj1_transformacion6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/mind_clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/reposo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-hdpi/tatami.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria100_92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria13_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria21_14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria28_22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria35_29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria43_36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria51_44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria59_52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria67_60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria6_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria75_68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria83_76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/bateria91_84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_esperando1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_esperando2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_esperando3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_inicio1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_inicio2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_teletransporte1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_teletransporte2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_teletransporte3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokunormal_teletransporte4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_cansado1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_cansado2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_cansado3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_inicio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_reposo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_reposo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_reposo3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_transformacion1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_transformacion2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_transformacion3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_transformacion4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_transformacion5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/gokussj1_transformacion6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/mind_clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/reposo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-ldpi/tatami.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria100_92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria13_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria21_14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria28_22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria35_29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria43_36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria51_44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria59_52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria67_60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria6_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria75_68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria83_76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/bateria91_84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_esperando1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_esperando2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_esperando3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_inicio1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_inicio2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_teletransporte1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_teletransporte2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_teletransporte3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokunormal_teletransporte4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_cansado1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_cansado2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_cansado3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_inicio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_reposo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_reposo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_reposo3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_transformacion1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_transformacion2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_transformacion3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_transformacion4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_transformacion5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/gokussj1_transformacion6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/mind_clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/reposo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-mdpi/tatami.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria100_92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria13_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria21_14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria28_22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria35_29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria43_36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria51_44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria59_52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria67_60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria6_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria75_68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria83_76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/bateria91_84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_esperando1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_esperando2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_esperando3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_inicio1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_inicio2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_teletransporte1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_teletransporte2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_teletransporte3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokunormal_teletransporte4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_cansado1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_cansado2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_cansado3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_inicio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_reposo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_reposo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_reposo3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_transformacion1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_transformacion2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_transformacion3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_transformacion4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_transformacion5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/gokussj1_transformacion6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/mind_clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/reposo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable-xhdpi/tatami.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable/fondo_menu_principal.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable/menu_progressbar_concentracion_entrenamiento.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable/pb_entrenamiento_amarillo.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable/pb_entrenamiento_rojo.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable/pb_entrenamiento_verde.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/drawable/reposo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/layout/lista_opciones.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/layout/menu_principal_completo.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/raw" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/res/values/arrays.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/xml/preferencias_aplicaciones.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/xml/preferencias_bbdd.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/xml/preferencias_generales.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/xml/preferencias_juegos.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.log" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/AmarinoLibrary_v0_55.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable/boton_menu_normal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/drawable/boton_menu_normal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable/boton_menu_seleccionado.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/drawable/boton_menu_seleccionado.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable/menu_progressbar_concentracion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/drawable/menu_progressbar_concentracion.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable/menu_progressbar_seleccion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/drawable/menu_progressbar_seleccion.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable/mind_clock.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/drawable/mind_clock.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/aplicacion_marcar_telefono.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/dragon_ball.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/grafica_barras.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/grafica_barras.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/grafica_historica.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/grafica_historica.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/menu_aplicaciones.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/menu_principal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/menu_principal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/layout/vista_comun.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/layout/vista_comun.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/menu/main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/xml/preferencias.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/app/eeg_mindroid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/app/eeg_mindroid_dragonball/EEG_MenuVistaComun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/app/eeg_mindroid_dragonball/EEG_MenuVistaComun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/app/eeg_mindroid_dragonball/VerticalProgressBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/app/eeg_mindroid_dragonball/VerticalProgressBar.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
+    <option name="y" value="27" />
+    <option name="width" value="1922" />
+    <option name="height" value="1054" />
+  </component>
+  <component name="ProjectId" id="1rksk9ymVJYXMCHQwjfZ68YFLIe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../EEG Mindroid GokEvolution" />
+    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Native>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6bb37c5e-8556-4923-9e5c-f681810f3eb3" name="Default" comment="" />
+      <created>1487419307638</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1487419307638</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="743" y="312" width="426" height="494" key="FileChooserDialogImpl" timestamp="1619532916758">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="743" y="312" width="426" height="494" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1619532916758" />
+    <state x="1203" y="120" width="611" height="960" key="find.popup" timestamp="1619532754183">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="1203" y="120" width="611" height="960" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1619532754183" />
+    <state x="608" y="268" width="700" height="530" key="recent.locations.popup" timestamp="1619532747076">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="608" y="268" width="700" height="530" key="recent.locations.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1619532747076" />
+    <state x="623" y="251" key="run.anything.popup" timestamp="1619531827463">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="623" y="251" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1619531827463" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1619532743317">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1619532743317" />
+  </component>
+</project>

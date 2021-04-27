@@ -1,0 +1,178 @@
+package com.app.eeg_mindroid;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+import com.app.eeg_mindroid.AmarinoListenerConexionBT.MindListenerBT;
+
+public class EEG_MenuComun extends EEG_MenuVistaComun implements MindListenerBT {
+	private Button botonSalir;
+	private List<Button> listaBotones;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// Pon el setContenView primero para que se puedan cargar todas las vistas bien
+		setContentView(R.layout.menu_principal);
+        super.onCreate(savedInstanceState);
+        
+        botonSalir = (Button) findViewById(R.id.btn_salir);
+        
+        // CAMBIAR AL EEG_MENUVISTACOMUN
+        listaBotones = new ArrayList<Button>();
+        
+        // Esto es para que si la aplicacion no se ha iniciado nunca que NO ponga la seleccion en el primer boton
+        listaBotones.get(indiceBotonSeleccionado).setPressed(false);
+        
+        // Click en boton Salir
+        botonSalir.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				finish();
+			}
+		});
+	}
+	
+	@Override
+    public void onResume() {
+    	super.onResume();
+    	// Iniciamos la conexion bluetooth
+    	AmarinoListenerConexionBT.onResume(this, this);
+    	
+    	// Reiniciamos el contador de segundos, la posicion del boton seleccionado, la barra de seleccion y 
+    	// concentracion
+    	indiceBotonSeleccionado = 0;
+    	//listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+    	contadorSegundosSeleccion = SEGUNDOS_SELECCION;
+    	nivelBarraSeleccion = 0;
+    	nivelBarraConcentracion = 0;
+    	
+    	// Registramos el Receiver del porcentaje de bateria
+        //this.registerReceiver(this.porcentajeBateriaReceiver, 
+        	    //new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+    }
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		// Finalizamos la conexion bluetooth
+		AmarinoListenerConexionBT.onPause(this, this);
+		// Desregistramos el Receiver del porcentaje de bateria
+        //this.unregisterReceiver(porcentajeBateriaReceiver);
+		
+		// Reiniciamos el contador de segundos
+    	indiceBotonSeleccionado = 0;
+    	
+    	// Hacemos esto para que la primera vez que entremos no este seleccionado el primer boton
+    	// hasta que no se haya conectado por primera vez
+    	if(!aplicacionIniciada)
+    		listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+    	
+    	aplicacionIniciada = true;
+    	
+    	// Reiniciamos la posicion del boton seleccionado, la barra de seleccion y 
+    	// ponemos la seleccion en el primer boton
+    	contadorSegundosSeleccion = SEGUNDOS_SELECCION;
+    	nivelBarraSeleccion = 0;
+    	nivelBarraConcentracion = 0;
+	}
+	
+	// Este metodo se usa para realizar una accion o no sobre un boton
+    private void realizarAccion() {
+    	// Si la seleccion de boton nos devuelve algo distinto de -1, sera para acceder a alguna actividad
+    	resultadoAccion = seleccionBoton();
+    	
+    	if(resultadoAccion != -1) {
+    		switch(resultadoAccion) {
+				/*case 0:
+					Intent intentBotonMenuAplicaciones = new Intent(EEG_Mindroid.this, EEG_Menu_Aplicaciones.class);
+					startActivity(intentBotonMenuAplicaciones);
+					break;
+				case 1:
+					Intent intentBotonGraficaHistorica = new Intent(EEG_Mindroid.this, GraficaHistorica.class);
+					startActivity(intentBotonGraficaHistorica);
+					break;
+				case 2:
+					Intent intentBotonDragonBall = new Intent(EEG_Mindroid.this, DragonBall.class);
+					startActivity(intentBotonDragonBall);
+					break;
+				case 3:
+					break;
+				case 4:
+					System.exit(0);
+					break;
+    			}*/
+    		}
+    	}
+    }
+
+	public void newSignalValue(Integer value) {
+		switch(value) {
+		case 0:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_green);
+			break;
+		case 200:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_red);
+			//listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+			nivelBarraSeleccion = 0;
+			progressBarSeleccion.setProgress(nivelBarraSeleccion);
+			break;
+		default:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_yellow);
+			//listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+			nivelBarraSeleccion = 0;
+			progressBarSeleccion.setProgress(nivelBarraSeleccion);
+			break;
+		}
+		
+		nivelSeñalConexion = value;
+	}
+
+	public void newConcentrationValue(String value) {
+		progressBarConcentracion.setProgress(Integer.valueOf(value));
+		nivelBarraConcentracion = Integer.valueOf(value);
+		seleccionBoton();
+	}
+
+	public void newRelaxValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newDeltaValue(String value) {
+		// TODO Auto-generated method stub
+		//seleccionBoton();
+	}
+
+	public void newThetaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newLowAlphaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newHighAlphaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newLowBetaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newHighBetaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newLowGammaValue(String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void newHighGammaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+}

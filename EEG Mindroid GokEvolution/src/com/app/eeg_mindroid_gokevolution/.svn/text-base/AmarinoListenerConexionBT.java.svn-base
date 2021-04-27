@@ -1,0 +1,383 @@
+package com.app.eeg_mindroid;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.util.Log;
+import Utils.Amarino.at.abraxas.amarino.AmarinoConfigured;
+import Utils.Amarino.at.abraxas.amarino.log.Logger;
+
+// Esta clase la usaremos para estar conectados por bluetooth durante toda la ejecucion de la aplicacion
+public class AmarinoListenerConexionBT {
+	private static ArduinoReceiver receiver;
+	private static ServiceIntentConfig intentConfig;
+	private static AmarinoConfigured embeddedAmarino;
+	
+	// Actividad principal (sera EEG_Android que es el menu principal)
+	private Activity context;
+	
+	// Listener
+	private static List<MindListenerBT> listenersBT = new ArrayList<MindListenerBT>();
+	
+	private static final String DIRECCION_BLUETOOTH =  "00:12:10:17:02:24";
+	
+	// Señales principales
+	private static Integer signal;
+	private static String concentration;
+	private static String relax;
+		
+	// Señales cerebrales
+	private static String delta;
+	private static String theta;
+	private static String lowAlpha;
+	private static String highAlpha;
+	private static String lowBeta;
+	private static String highBeta;
+	private static String lowGamma;
+	private static String highGamma;
+	
+	// Constructor
+	public AmarinoListenerConexionBT(Activity context){
+		this.context = context;
+	}
+	
+	public Integer getSignal() {
+		return signal;
+	}
+
+	public String getRelax() {
+		return relax;
+	}
+
+	public String getConcentration() {
+		return concentration;
+	}
+
+	public static String getDelta() {
+		return delta;
+	}
+
+
+	public static String getTheta() {
+		return theta;
+	}
+
+
+	public static String getLowAlpha() {
+		return lowAlpha;
+	}
+
+
+	public static String getHighAlpha() {
+		return highAlpha;
+	}
+
+
+	public static String getLowBeta() {
+		return lowBeta;
+	}
+
+
+	public static String getHighBeta() {
+		return highBeta;
+	}
+
+
+	public static String getLowGamma() {
+		return lowGamma;
+	}
+
+
+	public static String getHighGamma() {
+		return highGamma;
+	}
+
+	public static ServiceIntentConfig getIntentConfig() {
+		return intentConfig;
+	}
+	
+	public static class ArduinoReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			if (intent != null) {
+				String action = intent.getAction();
+				if (action == null)
+					return;
+				ServiceIntentConfig configuredIntents = new ServiceIntentConfig();
+				if (configuredIntents.getIntentNameActionConnect().equals(
+						action)) {
+					//Logger.d(TAG, "CONNECT request received");
+					Intent i = new Intent(context, BTService.class);
+					i.setAction(configuredIntents.getIntentNameActionConnect());
+					i.replaceExtras(intent);
+					context.startService(i);
+				} else if (configuredIntents.getIntentNameActionReceived()
+						.equals(action)) {
+					//Logger.d(TAG, "DATA_RECEIVED request received");
+					@SuppressWarnings("unused")
+					char[] chData = null;
+					
+					String strData = null;
+					// the device address from which the data was sent, we don't
+					// need it
+					// here but to demonstrate how you retrieve it
+					@SuppressWarnings("unused")
+					final String address = intent.getStringExtra(ServiceIntentConfig.EXTRA_DEVICE_ADDRESS);
+
+					// the type of data which is added to the intent
+					final int dataType = intent.getIntExtra(
+							ServiceIntentConfig.EXTRA_DATA_TYPE, -1);
+					/*Log.v(TAG,
+							new StringBuilder()
+									.append("data received from Arduino with type: ")
+									.append(dataType).toString());*/
+					if (dataType == ServiceIntentConfig.CHAR_ARRAY_EXTRA) {
+						chData = intent.getCharArrayExtra(ServiceIntentConfig.EXTRA_DATA);
+					}
+					if (dataType == ServiceIntentConfig.STRING_EXTRA) {
+						strData = intent.getStringExtra(ServiceIntentConfig.EXTRA_DATA);
+						Log.d("EEEEEEEE: ", "DATOS: " + strData);	
+						
+						
+						if (strData != null) {
+							// Dividimos la cadena obtenida por comas
+							String[] datos = strData.split(",");
+							
+							signal = Integer.valueOf(datos[0]);
+							launchNewSignal(signal);
+							
+							// CAMBIARLO POR signal != 200 EN EL FUTURO PARA QUE NO ENVIE DATOS
+							// SI NO TIENE CALIDAD DE SEÑAL DISTINTA DE MALA
+							if(signal != 999) {
+								concentration = datos[1];
+								launchNewConcentration(concentration);
+								relax = datos[2];
+								launchNewRelax(relax);
+								delta = datos[3];
+								launchNewDelta(delta);
+								theta = datos[4];
+								launchNewTheta(theta);
+								lowAlpha = datos[5];
+								launchNewLowAlpha(lowAlpha);
+								highAlpha = datos[6];
+								launchNewHighAlpha(highAlpha);
+								lowBeta = datos[7];
+								launchNewLowBeta(lowBeta);
+								highBeta = datos[8];
+								launchNewHighBeta(highBeta);
+								lowGamma = datos[9];
+								launchNewLowGamma(lowGamma);
+								highGamma = datos[10];
+								launchNewHighGamma(highGamma);
+							// Si la señal es mala, todos los datos a 0
+							} else {
+								launchNewConcentration("0");
+								launchNewRelax("0");
+								launchNewDelta("0");
+								launchNewTheta("0");
+								launchNewLowAlpha("0");
+								launchNewHighAlpha("0");
+								launchNewLowBeta("0");
+								launchNewHighBeta("0");
+								launchNewLowGamma("0");
+								launchNewHighGamma("0");	
+							}
+						}
+						
+					}
+				} else if (configuredIntents.getIntentNameActionDisconnect()
+						.equals(action)) {
+					//Logger.d(TAG, "DISCONNECT request received");
+					Intent i = new Intent(context, BTService.class);
+					i.setAction(configuredIntents
+							.getIntentNameActionDisconnect());
+					i.replaceExtras(intent);
+					context.startService(i);
+				} else if (configuredIntents
+						.getIntentNameActionConnectedDevices().equals(action)) {
+					//Logger.d(TAG, "GET_CONNECTED_DEVICES request received");
+					Intent i = new Intent(context, BTService.class);
+					i.setAction(configuredIntents
+							.getIntentNameActionGetConnectedDevices());
+					context.startService(i);
+				}
+			}
+		}
+	}
+	
+	public static void onCreate(Activity activity, MindListenerBT mindListenerBT) {
+		receiver = new ArduinoReceiver();
+		intentConfig = new ServiceIntentConfig();
+		
+		listenersBT.add(mindListenerBT);
+		
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			activity.registerReceiver(receiver,
+					new IntentFilter(intentConfig.getIntentNameActionConnect()));
+			activity.registerReceiver(receiver,
+					new IntentFilter(intentConfig.getIntentNameActionReceived()));
+		}
+	}
+	
+	public static void onStart(Activity activity) {
+		embeddedAmarino = new AmarinoConfigured(activity.getApplicationContext());
+		embeddedAmarino.setIntentConfig(intentConfig);
+		embeddedAmarino.connect(DIRECCION_BLUETOOTH);
+	}
+	
+	public static void onResume(Activity activity, MindListenerBT mindListenerBT) {
+		receiver = new ArduinoReceiver();
+		intentConfig = new ServiceIntentConfig();
+		
+		listenersBT.add(mindListenerBT);
+		
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			activity.registerReceiver(receiver,
+					new IntentFilter(intentConfig.getIntentNameActionConnect()));
+			activity.registerReceiver(receiver,
+					new IntentFilter(intentConfig.getIntentNameActionReceived()));
+		}
+		
+		embeddedAmarino = new AmarinoConfigured(activity.getApplicationContext());
+		embeddedAmarino.setIntentConfig(intentConfig);
+		embeddedAmarino.connect(DIRECCION_BLUETOOTH);
+	}
+	
+	public static void onPause(Activity activity, MindListenerBT mindListenerBT) {
+		embeddedAmarino.disconnect(DIRECCION_BLUETOOTH);
+		
+		if (null != receiver) {
+			try {
+				listenersBT.remove(mindListenerBT);
+				
+				if (listenersBT == null || listenersBT.isEmpty())
+					activity.unregisterReceiver(receiver);
+			} catch (Exception e) {
+				//Log.e(TAG, Log.getStackTraceString(e));
+			}
+		}
+	}
+
+	/*private void addListener(MindListenerBT mindListener, Activity activity) {
+		listeners.add(mindListener);
+		if (listeners != null && !listeners.isEmpty()) {
+			activity.registerReceiver(receiver,
+					new IntentFilter(intentConfig.getIntentNameActionConnect()));
+			activity.registerReceiver(receiver,
+					new IntentFilter(intentConfig.getIntentNameActionReceived()));
+		}
+	}
+
+	private void removeListener(MindListenerBT mindListener, Activity activity) {
+		listeners.remove(mindListener);
+		if (listeners == null || listeners.isEmpty())
+			activity.unregisterReceiver(receiver);
+	}*/
+	
+	private static void launchNewSignal(Integer signal) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newSignalValue(signal);
+			}
+		}
+	}
+
+	private static void launchNewRelax(String relax) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newRelaxValue(relax);
+			}
+		}
+	}
+
+	private static void launchNewConcentration(String concentration) {
+		if (listenersBT != null && !listenersBT.isEmpty())
+			for (MindListenerBT listener : listenersBT) {
+				listener.newConcentrationValue(concentration);
+			}
+	}
+	
+	private static void launchNewDelta(String delta) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newDeltaValue(delta);
+			}
+		}
+	}
+	
+	private static void launchNewTheta(String theta) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newThetaValue(theta);
+			}
+		}
+	}
+	
+	private static void launchNewLowAlpha(String lowAlpha) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newLowAlphaValue(lowAlpha);
+			}
+		}
+	}
+	
+	private static void launchNewHighAlpha(String highAlpha) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newHighAlphaValue(highAlpha);
+			}
+		}
+	}
+	
+	private static void launchNewLowBeta(String lowBeta) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newLowBetaValue(lowBeta);
+			}
+		}
+	}
+	
+	private static void launchNewHighBeta(String highBeta) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newHighBetaValue(highBeta);
+			}
+		}
+	}
+	
+	private static void launchNewLowGamma(String lowGamma) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newLowGammaValue(lowGamma);
+			}
+		}
+	}
+	
+	private static void launchNewHighGamma(String highGamma) {
+		if (listenersBT != null && !listenersBT.isEmpty()) {
+			for (MindListenerBT listener : listenersBT) {
+				listener.newHighGammaValue(highGamma);
+			}
+		}
+	}
+	
+	interface MindListenerBT {
+		public void newSignalValue(Integer value);
+		public void newConcentrationValue(String value);
+		public void newRelaxValue(String value);
+		
+		public void newDeltaValue(String value);
+		public void newThetaValue(String value);
+		public void newLowAlphaValue(String value);
+		public void newHighAlphaValue(String value);
+		public void newLowBetaValue(String value);
+		public void newHighBetaValue(String value);
+		public void newLowGammaValue(String value);
+		public void newHighGammaValue(String value);
+	}
+}

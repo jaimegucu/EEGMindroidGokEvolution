@@ -1,0 +1,242 @@
+package com.app.eeg_mindroid;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+
+public class VistaDragonBallSurface extends SurfaceView {
+	private SurfaceHolder holder;
+    private GameLoopThread gameLoopThread;
+	// FPS del juego
+	private int FPS = 5;
+	
+    // Tamaño de los sprites (pequeño = 0, normal = 1, grande = 2)
+    private int tamañoSprite = 1;
+    
+    // Imagenes bitmaps de goku normal
+	private Bitmap fondo, fondoEscalado, bmpGokuNormalEsperando1, bmpGokuNormalEsperando2, bmpGokuNormalEsperando3, 
+		bmpGokuNormalInicio1, bmpGokuNormalInicio2, bmpGokuNormalTeletransporte1, bmpGokuNormalTeletransporte2, 
+		bmpGokuNormalTeletransporte3, bmpGokuNormalTeletransporte4;
+	// Imagenes bitmaps de goku ssj1
+	private Bitmap bmpGokuSSJ1Transformacion1, bmpGokuSSJ1Transformacion2, bmpGokuSSJ1Transformacion3, bmpGokuSSJ1Transformacion4,
+	bmpGokuSSJ1Transformacion5, bmpGokuSSJ1Transformacion6, bmpGokuSSJ1Inicio;
+	
+	// Sprites de goku normal 1
+	private SpriteDragonBall spriteGokuNormalEsperando1, spriteGokuNormalEsperando2, spriteGokuNormalEsperando3, 
+		spriteGokuNormalInicio1, spriteGokuNormalInicio2, spriteGokuNormalTeletransporte1, spriteGokuNormalTeletransporte2, 
+		spriteGokuNormalTeletransporte3, spriteGokuNormalTeletransporte4;
+	
+	private SpriteDragonBall spriteGokuSSJ1Transformacion1, spriteGokuSSJ1Transformacion2, spriteGokuSSJ1Transformacion3,
+	spriteGokuSSJ1Transformacion4, spriteGokuSSJ1Transformacion5, spriteGokuSSJ1Transformacion6, spriteGokuSSJ1Inicio;
+	
+	// Variables de CONTROL DE ANIMACIONES
+	/*** ANIMACION INICIAL GOKU NORMAL ***/ 
+	private boolean animacionInicialGokuNormal = true;
+	private int contadorAnimacionInicialGokuNormal = 0;
+	private int contadorAnimacionIntentoSSJ1 = 0;
+	/**************************************/
+	/*** ANIMACION TRANSFORMACION DE GOKU NORMAL A SSJ1 ***/
+	private int contadorAnimacionGokuNormalASSJ1 = 0;
+	private int repeticionAnimacionPeloNegroDorado = 0;
+	
+	// CONSTRUCTOR
+	public VistaDragonBallSurface(Context context, AttributeSet attrs) {
+		super(context);
+		gameLoopThread = new GameLoopThread(this);
+		holder = getHolder();
+		holder.addCallback(new SurfaceHolder.Callback() {
+			
+			public void surfaceDestroyed(SurfaceHolder holder) {
+				boolean retry = true;
+				gameLoopThread.setRunning(false);
+				while(retry) {
+					try {
+						gameLoopThread.join();
+						retry = false;
+					} catch(InterruptedException e) {}
+				}
+			}
+			
+			public void surfaceCreated(SurfaceHolder holder) {
+				// Esto lo usamos para dibujar el fondo con el tatami
+				fondo = BitmapFactory.decodeResource(getResources(), R.drawable.tatami);
+				float scaleWidth = (float)fondo.getWidth()/(float)getWidth();
+			    float scaleHeight = (float)fondo.getHeight()/(float)getHeight();
+			    int newWidth = Math.round(fondo.getWidth()/scaleWidth);
+			    int newHeight = Math.round(fondo.getHeight()/scaleHeight);
+			    fondoEscalado = Bitmap.createScaledBitmap(fondo, newWidth, newHeight, true);
+				gameLoopThread.setRunning(true);
+				gameLoopThread.start();
+			}
+			
+			public void surfaceChanged(SurfaceHolder holder, int format, int width,
+					int height) {
+			}
+		});
+		
+		// Iniciamos imagenes goku normal
+		bmpGokuNormalEsperando1 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_esperando1);
+		bmpGokuNormalEsperando2 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_esperando2);
+		bmpGokuNormalEsperando3 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_esperando3);
+		bmpGokuNormalInicio1 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_inicio1);
+		bmpGokuNormalInicio2 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_inicio2);
+		bmpGokuNormalTeletransporte1 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_teletransporte1);
+		bmpGokuNormalTeletransporte2 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_teletransporte2);
+		bmpGokuNormalTeletransporte3 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_teletransporte3);
+		bmpGokuNormalTeletransporte4 = BitmapFactory.decodeResource(getResources(), R.drawable.gokunormal_teletransporte4);
+		
+		// Iniciamos imagenes goku ssj1
+		bmpGokuSSJ1Transformacion1 = BitmapFactory.decodeResource(getResources(), R.drawable.gokussj1_transformacion1);
+		bmpGokuSSJ1Transformacion2 = BitmapFactory.decodeResource(getResources(), R.drawable.gokussj1_transformacion2);
+		bmpGokuSSJ1Transformacion3 = BitmapFactory.decodeResource(getResources(), R.drawable.gokussj1_transformacion3);
+		bmpGokuSSJ1Transformacion4 = BitmapFactory.decodeResource(getResources(), R.drawable.gokussj1_transformacion4);
+		bmpGokuSSJ1Transformacion5 = BitmapFactory.decodeResource(getResources(), R.drawable.gokussj1_transformacion5);
+		bmpGokuSSJ1Transformacion6 = BitmapFactory.decodeResource(getResources(), R.drawable.gokussj1_transformacion6);
+		bmpGokuSSJ1Inicio = BitmapFactory.decodeResource(getResources(), R.drawable.gokussj1_inicio);
+		
+		// Creamos sprites goku normal
+		spriteGokuNormalEsperando1 = new SpriteDragonBall(this, bmpGokuNormalEsperando1, tamañoSprite);
+		spriteGokuNormalEsperando2 = new SpriteDragonBall(this, bmpGokuNormalEsperando2, tamañoSprite);
+		spriteGokuNormalEsperando3 = new SpriteDragonBall(this, bmpGokuNormalEsperando3, tamañoSprite);
+		spriteGokuNormalInicio1 = new SpriteDragonBall(this, bmpGokuNormalInicio1, tamañoSprite);
+		spriteGokuNormalInicio2 = new SpriteDragonBall(this, bmpGokuNormalInicio2, tamañoSprite);
+		spriteGokuNormalTeletransporte1 = new SpriteDragonBall(this, bmpGokuNormalTeletransporte1, tamañoSprite);
+		spriteGokuNormalTeletransporte2 = new SpriteDragonBall(this, bmpGokuNormalTeletransporte2, tamañoSprite);
+		spriteGokuNormalTeletransporte3 = new SpriteDragonBall(this, bmpGokuNormalTeletransporte3, tamañoSprite);
+		spriteGokuNormalTeletransporte4 = new SpriteDragonBall(this, bmpGokuNormalTeletransporte4, tamañoSprite);
+		
+		// Sprites imagenes goku ssj1
+		spriteGokuSSJ1Transformacion1 = new SpriteDragonBall(this, bmpGokuSSJ1Transformacion1, tamañoSprite);
+		spriteGokuSSJ1Transformacion2 = new SpriteDragonBall(this, bmpGokuSSJ1Transformacion2, tamañoSprite);
+		spriteGokuSSJ1Transformacion3 = new SpriteDragonBall(this, bmpGokuSSJ1Transformacion3, tamañoSprite);
+		spriteGokuSSJ1Transformacion4 = new SpriteDragonBall(this, bmpGokuSSJ1Transformacion4, tamañoSprite);
+		spriteGokuSSJ1Transformacion5 = new SpriteDragonBall(this, bmpGokuSSJ1Transformacion5, tamañoSprite);
+		spriteGokuSSJ1Transformacion6 = new SpriteDragonBall(this, bmpGokuSSJ1Transformacion6, tamañoSprite);
+		spriteGokuSSJ1Inicio = new SpriteDragonBall(this, bmpGokuSSJ1Inicio, tamañoSprite);
+	}
+	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// Dibujamos el fondo
+		canvas.drawBitmap(fondoEscalado, 0, 0, null);
+		
+		// Comprobamos si NO es animacion inicial (asi solo lo comprueba una vez al iniciar el juego)
+		if(!animacionInicialGokuNormal) {
+			if(contadorAnimacionIntentoSSJ1 > 10) {
+				//contadorAnimacionIntentoSSJ1 = 0;
+				switch(contadorAnimacionGokuNormalASSJ1) {
+					case 0:
+						spriteGokuSSJ1Transformacion1.dibujaSprite(canvas);
+						contadorAnimacionGokuNormalASSJ1++;
+						break;
+					case 1:
+						if(repeticionAnimacionPeloNegroDorado % 2 == 0)
+							spriteGokuSSJ1Transformacion2.dibujaSprite(canvas);
+						else
+							spriteGokuSSJ1Transformacion3.dibujaSprite(canvas);
+						repeticionAnimacionPeloNegroDorado++;
+						if(repeticionAnimacionPeloNegroDorado == 6) {
+							contadorAnimacionGokuNormalASSJ1++;
+							// Lo pongo en 0 para usarlo abajo
+							repeticionAnimacionPeloNegroDorado = 0;
+						}
+						break;
+					case 2:
+						// Con esto repetimos cada animacion dos veces (1 cada vez)
+						if(repeticionAnimacionPeloNegroDorado % 3 == 0) {
+							spriteGokuSSJ1Transformacion4.dibujaSprite(canvas);
+						} else if(repeticionAnimacionPeloNegroDorado % 2 == 0) {
+							spriteGokuSSJ1Transformacion5.dibujaSprite(canvas);
+						} else {
+							spriteGokuSSJ1Transformacion6.dibujaSprite(canvas);
+						}
+						repeticionAnimacionPeloNegroDorado++;
+						if(repeticionAnimacionPeloNegroDorado == 6) {
+							contadorAnimacionGokuNormalASSJ1++;
+							repeticionAnimacionPeloNegroDorado = 0;
+						}
+						
+						break;
+					default:
+						spriteGokuSSJ1Inicio.dibujaSprite(canvas);
+						break;
+				}
+				
+			} else {
+				// Si es par, muestra goku 1 y si es impar muestra 2 con pelos un poco rubio
+				if(contadorAnimacionIntentoSSJ1 % 2 == 0)
+					spriteGokuNormalInicio1.dibujaSprite(canvas);
+				else
+					spriteGokuNormalInicio2.dibujaSprite(canvas);
+				contadorAnimacionIntentoSSJ1++;
+			}
+		} else {
+			switch(contadorAnimacionInicialGokuNormal) {
+			case 0:
+				spriteGokuNormalTeletransporte1.dibujaSprite(canvas);
+				contadorAnimacionInicialGokuNormal++;
+				break;
+			case 1:
+				spriteGokuNormalTeletransporte2.dibujaSprite(canvas);
+				contadorAnimacionInicialGokuNormal++;
+				break;
+			case 2:
+				spriteGokuNormalTeletransporte3.dibujaSprite(canvas);
+				contadorAnimacionInicialGokuNormal++;
+				break;
+			case 3:
+				spriteGokuNormalTeletransporte4.dibujaSprite(canvas);
+				contadorAnimacionInicialGokuNormal = 0;
+				animacionInicialGokuNormal = false;
+				break;
+			}
+		}
+	}
+	
+	class GameLoopThread extends Thread {
+		private VistaDragonBallSurface view;
+		private boolean running = false;
+		
+		public GameLoopThread(VistaDragonBallSurface view) {
+			this.view = view;
+		}
+		
+		public void setRunning(boolean run) {
+			running = run;
+		}
+		
+		@Override
+		public void run() {
+			long ticksPS = 1000 / FPS;
+            long startTime;
+            long sleepTime;
+            
+			while(running) {
+				Canvas c = null;
+				startTime = System.currentTimeMillis();
+				try {
+					c = view.getHolder().lockCanvas();
+					synchronized (view.getHolder()) {
+						view.onDraw(c);
+					}
+				} finally {
+					if(c != null)
+						view.getHolder().unlockCanvasAndPost(c);
+				}
+				sleepTime = ticksPS-(System.currentTimeMillis() - startTime);
+				try {
+					if(sleepTime > 0)
+						sleep(sleepTime);
+					else
+						sleep(10);
+				} catch(Exception e) {}
+			}
+		}
+	}
+}

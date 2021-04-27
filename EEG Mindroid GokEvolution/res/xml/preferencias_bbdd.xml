@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:key="preferencias_opciones" >
+    
+    
+	<PreferenceCategory android:title="@string/btn_opciones_base_datos">
+	    
+	    <CheckBoxPreference
+   		 	android:key="guardar_datos"
+    		android:title="@string/txt_guardar_datos"
+    		android:summary="@string/txt_guardar_datos_texto"
+    		android:enabled="true"/>
+	    
+	    <Preference 
+	        	android:key="eliminar_datos"
+	        	android:title="@string/txt_eliminar_datos"
+                android:summary="@string/txt_eliminar_datos_texto"/>
+	    <Preference 
+	        	android:key="ver_datos"
+	        	android:title="@string/txt_ver_datos"
+                android:summary="@string/txt_ver_datos_texto"/>
+	    <Preference 
+	        	android:key="exportar_datos"
+	        	android:title="@string/txt_exportar_datos"
+                android:summary="@string/txt_exportar_datos_texto"/>
+	    
+    <!-- <ListPreference
+		    android:key="grafica_barras_tiempo"
+		    android:title="@string/txt_entrenamiento_duracion_grafica_barras"
+		    android:summary="@string/txt_entrenamiento_duracion_grafica_barras_descripcion"
+		    android:entries="@array/opcion_entrenamiento_duracion_grafica_barras"
+		    android:entryValues="@array/opcion_entrenamiento_duracion_grafica_barras_valores"
+		    android:defaultValue="50"/>
+    </PreferenceCategory>
+    
+	<PreferenceCategory android:title="@string/btn_grafica_historica">
+        <ListPreference
+		    android:key="grafica_historica_tiempo"
+		    android:title="@string/txt_entrenamiento_duracion_grafica_historica"
+		    android:summary="@string/txt_entrenamiento_duracion_grafica_historica_descripcion"
+		    android:entries="@array/opcion_entrenamiento_duracion_grafica_historica"
+		    android:entryValues="@array/opcion_entrenamiento_duracion_grafica_historica_valores"
+		    android:defaultValue="50"/>
+        
+        <ListPreference
+		    android:key="grafica_historica_datos"
+		    android:title="@string/txt_entrenamiento_grafica_historica_datos"
+		    android:summary="@string/txt_entrenamiento_grafica_historica_datos_descripcion"
+		    android:entries="@array/opcion_entrenamiento_grafica_historica_datos"
+		    android:entryValues="@array/opcion_entrenamiento_grafica_historica_datos_valores"
+		    android:defaultValue="8"/>
+        
+        <CheckBoxPreference
+   		 	android:key="grafica_historica_puntos_vertices"
+    		android:title="@string/txt_entrenamiento_grafica_historica_puntos"
+    		android:summary="@string/txt_entrenamiento_grafica_historica_puntos_descripcion"
+    		android:enabled="true"/>
+        
+        <CheckBoxPreference
+   		 	android:key="grafica_historica_color_relleno"
+    		android:title="@string/txt_entrenamiento_grafica_historica_color_relleno"
+    		android:summary="@string/txt_entrenamiento_grafica_historica_color_relleno_descripcion"
+    		android:enabled="true"/> -->
+    </PreferenceCategory> 
+
+</PreferenceScreen>

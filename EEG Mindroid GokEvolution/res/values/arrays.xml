@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <resources>
+	
+     <!-- OPCIONES GENERALES -->
+	<string-array name="opcion_general_vista_menu">
+	  <item>@string/txt_general_vista_normal</item>
+	  <item>@string/txt_general_vista_eeg</item>
+	</string-array>
+	<string-array name="opcion_general_vista_menu_valores">
+  		<item>1</item>
+  		<item>2</item>
+	</string-array>
+	
+	<string-array name="opcion_general_tiempo_sesion">
+	  <item>@string/txt_10segundos</item>
+	  <item>@string/txt_20segundos</item>
+	  <item>@string/txt_30segundos</item>
+	  <item>@string/txt_40segundos</item>
+	  <item>@string/txt_50segundos</item>
+	  <item>@string/txt_60segundos_defecto</item>
+	  <item>@string/txt_70segundos</item>
+	  <item>@string/txt_80segundos</item>
+	  <item>@string/txt_90segundos</item>
+	  <item>@string/txt_100segundos</item>
+	  <item>@string/txt_110segundos</item>
+	  <item>@string/txt_120segundos</item>
+	</string-array>
+	<string-array name="opcion_general_numero_sesiones">
+	  <item>@string/txt_1sesiones</item>
+	  <item>@string/txt_2sesiones</item>
+	  <item>@string/txt_3sesiones</item>
+	  <item>@string/txt_4sesiones</item>
+	  <item>@string/txt_5sesiones</item>
+	  <item>@string/txt_6sesiones</item>
+	  <item>@string/txt_7sesiones</item>
+	  <item>@string/txt_8sesiones</item>
+	  <item>@string/txt_9sesiones</item>
+	  <item>@string/txt_10sesiones</item>
+	  <item>@string/txt_11sesiones</item>
+	  <item>@string/txt_12sesiones</item>
+	  <item>@string/txt_13sesiones</item>
+	  <item>@string/txt_14sesiones</item>
+	  <item>@string/txt_15sesiones_defecto</item>
+	  <item>@string/txt_16sesiones</item>
+	  <item>@string/txt_17sesiones</item>
+	  <item>@string/txt_18sesiones</item>
+	  <item>@string/txt_19sesiones</item>
+	  <item>@string/txt_20sesiones</item>
+	</string-array>
+	<string-array name="opcion_general_tiempo_sesion_valores">
+  		<item>10</item>
+  		<item>20</item>
+  		<item>30</item>
+  		<item>40</item>
+  		<item>50</item>
+  		<item>60</item>
+  		<item>70</item>
+  		<item>80</item>
+  		<item>90</item>
+  		<item>100</item>
+  		<item>110</item>
+  		<item>120</item>
+	</string-array>
+	
+	<string-array name="opcion_general_numero_sesiones_valores">
+  		<item>1</item>
+  		<item>2</item>
+  		<item>3</item>
+  		<item>4</item>
+  		<item>5</item>
+  		<item>6</item>
+  		<item>7</item>
+  		<item>8</item>
+  		<item>9</item>
+  		<item>10</item>
+  		<item>11</item>
+  		<item>12</item>
+  		<item>13</item>
+  		<item>14</item>
+  		<item>15</item>
+  		<item>16</item>
+  		<item>17</item>
+  		<item>18</item>
+  		<item>19</item>
+  		<item>20</item>
+	</string-array>
+	
+	<string-array name="opcion_general_porcentaje_seleccion">
+	  <item>@string/txt_10porcentaje</item>
+	  <item>@string/txt_20porcentaje</item>
+	  <item>@string/txt_30porcentaje</item>
+	  <item>@string/txt_40porcentaje</item>
+	  <item>@string/txt_50porcentaje_defecto</item>
+	  <item>@string/txt_60porcentaje</item>
+	  <item>@string/txt_70porcentaje</item>
+	  <item>@string/txt_80porcentaje</item>
+	  <item>@string/txt_90porcentaje</item>
+	</string-array>
+	<string-array name="opcion_general_porcentaje_seleccion_valores">
+  		<item>10</item>
+  		<item>20</item>
+  		<item>30</item>
+  		<item>40</item>
+  		<item>50</item>
+  		<item>60</item>
+  		<item>70</item>
+  		<item>80</item>
+  		<item>90</item>
+	</string-array>
+	
+	<string-array name="opcion_general_tiempo_seleccion">
+	  <item>@string/txt_1segundos</item>
+	  <item>@string/txt_2segundos</item>
+	  <item>@string/txt_3segundos</item>
+	  <item>@string/txt_4segundos_defecto</item>
+	  <item>@string/txt_5segundos</item>
+	  <item>@string/txt_6segundos</item>
+	  <item>@string/txt_7segundos</item>
+	  <item>@string/txt_8segundos</item>
+	  <item>@string/txt_9segundos</item>
+	  <item>@string/txt_10segundos</item>
+	</string-array>
+	<string-array name="opcion_general_tiempo_seleccion_valores">
+  		<item>1</item>
+  		<item>2</item>
+  		<item>3</item>
+  		<item>4</item>
+  		<item>5</item>
+  		<item>6</item>
+  		<item>7</item>
+  		<item>8</item>
+  		<item>9</item>
+  		<item>10</item>
+	</string-array>
+	
+	<!-- OPCIONES ENTRENAMIENTO -->
+	<string-array name="opcion_entrenamiento_duracion_grafica_barras">
+	  <item>@string/txt_30segundos</item>
+	  <item>@string/txt_40segundos</item>
+	  <item>@string/txt_50segundos_defecto</item>
+	  <item>@string/txt_60segundos</item>
+	  <item>@string/txt_90segundos</item>
+	  <item>@string/txt_120segundos</item>
+	  <item>@string/txt_180segundos</item>
+	  <item>@string/txt_300segundos</item>
+	  <item>@string/txt_600segundos</item>
+	  <item>@string/txt_1800segundos</item>
+	</string-array>
+	<string-array name="opcion_entrenamiento_duracion_grafica_barras_valores">
+  		<item>30</item>
+  		<item>40</item>
+  		<item>50</item>
+  		<item>60</item>
+  		<item>90</item>
+  		<item>120</item>
+  		<item>180</item>
+  		<item>300</item>
+  		<item>600</item>
+  		<item>1800</item>
+	</string-array>
+	
+	<string-array name="opcion_entrenamiento_duracion_grafica_historica">
+	  <item>@string/txt_30segundos</item>
+	  <item>@string/txt_40segundos</item>
+	  <item>@string/txt_50segundos_defecto</item>
+	  <item>@string/txt_60segundos</item>
+	  <item>@string/txt_90segundos</item>
+	  <item>@string/txt_120segundos</item>
+	  <item>@string/txt_180segundos</item>
+	  <item>@string/txt_300segundos</item>
+	  <item>@string/txt_600segundos</item>
+	  <item>@string/txt_1800segundos</item>
+	</string-array>
+	<string-array name="opcion_entrenamiento_duracion_grafica_historica_valores">
+  		<item>30</item>
+  		<item>40</item>
+  		<item>50</item>
+  		<item>60</item>
+  		<item>90</item>
+  		<item>120</item>
+  		<item>180</item>
+  		<item>300</item>
+  		<item>600</item>
+  		<item>1800</item>
+	</string-array>
+	
+	<string-array name="opcion_entrenamiento_grafica_historica_datos">
+	  <item>2</item>
+	  <item>3</item>
+	  <item>4</item>
+	  <item>5</item>
+	  <item>6</item>
+	  <item>7</item>
+	  <item>@string/txt_entrenamiento_grafica_historica_datos_8_defecto</item>
+	  <item>9</item>
+	  <item>10</item>
+	  <item>11</item>
+	  <item>12</item>
+	  <item>13</item>
+	  <item>14</item>
+	  <item>15</item>
+	  <item>16</item>
+	  <item>17</item>
+	  <item>18</item>
+	  <item>19</item>
+	  <item>20</item>
+	</string-array>
+	<string-array name="opcion_entrenamiento_grafica_historica_datos_valores">
+	  <item>2</item>
+	  <item>3</item>
+	  <item>4</item>
+	  <item>5</item>
+	  <item>6</item>
+	  <item>7</item>
+	  <item>8</item>
+	  <item>9</item>
+	  <item>10</item>
+	  <item>11</item>
+	  <item>12</item>
+	  <item>13</item>
+	  <item>14</item>
+	  <item>15</item>
+	  <item>16</item>
+	  <item>17</item>
+	  <item>18</item>
+	  <item>19</item>
+	  <item>20</item>
+	</string-array>
+	
+	<string-array name="opcion_dificultad_tipos">
+	  <item>@string/opciones_dificultad_facil</item>
+	  <item>@string/opciones_dificultad_normal</item>
+	  <item>@string/opciones_dificultad_dificil</item>
+	</string-array>
+	<string-array name="opcion_dificultad_tipos_valores">
+  		<item>0</item>
+  		<item>1</item>
+  		<item>2</item>
+	</string-array>
+	
+	<string-array name="opcion_musica_tipos">
+	  <item>@string/musica_celula_1</item>
+	  <item>@string/musica_celula_2</item>
+	  <item>@string/musica_celula_3</item>
+	  <item>@string/musica_freezer</item>
+	  <item>@string/musica_resumen_capitulo</item>
+	  <item>@string/musica_majin_boo</item>
+	  <item>@string/musica_gokevolution_entrena_kamisama</item>
+	  <item>@string/musica_vegeta</item>
+	  <item>@string/musica_ejercito_rojo</item>
+	  <item>@string/musica_piccolo</item>
+	</string-array>
+	
+	<string-array name="opcion_musica_tipos_valores">
+  		<item>0</item>
+  		<item>1</item>
+  		<item>2</item>
+  		<item>3</item>
+  		<item>4</item>
+  		<item>5</item>
+  		<item>6</item>
+  		<item>7</item>
+  		<item>8</item>
+  		<item>9</item>
+	</string-array>
+</resources>

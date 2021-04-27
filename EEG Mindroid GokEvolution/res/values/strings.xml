@@ -1,0 +1,425 @@
+<resources>
+    <!-- MENSAJES NEUROSKY -->
+    
+    <string name="conectando_bluetooth">Conectando bluetooth...</string>
+    <string name="bluetooth_no_emparejado">Debe emparejar el bluetooth antes de entrar en la aplicación. Salga e inténtelo de nuevo.</string>
+    <string name="bluetooth_no_encendido">Debe encender el bluetooth antes de entrar en la aplicación. Salga e inténtelo de nuevo.</string>
+    <string name="bateria_baja">Batería baja, debe cambiar las pilas</string>
+    
+    <!-- VARIOS -->
+    <string name="nombre_amplicacion">EEG Mindroid GokEvolution</string>
+	<string name="bluetooth">Bluetooth</string>
+    <string name="title_activity_eeg__mindroid">EEG Mindroid Training</string>
+    <string name="calidad_conexion">Calidad Conexión</string>
+    
+    <!-- MENU COMUN -->
+    <string name="porcentaje_inicial_bateria">100%</string>
+    <string name="tiempo_seleccion">Tiempo: 10s</string>
+    <string name="segundos_seleccion">10s</string>
+    <string name="txt_sesion">SESIÓN</string>
+    
+    <!-- GOKEVOLUTION -->
+    
+    <string name="nivel_concentracion">Concentración</string>
+    <string name="nivel_normal">GokEvolution Normal</string>
+    <string name="nivel_ssj1">GokEvolution SSJ1</string>
+    <string name="nivel_ssj2">GokEvolution SSJ2</string>
+    <string name="nivel_ssj3">GokEvolution SSJ3</string>
+    <string name="nivel_ssj4">GokEvolution SSJ4</string>
+    
+    
+    
+    <!-- *** MENU APLICACIONES *** -->
+    
+    
+    <!-- LLAMADA TELEFONICA -->
+	<string name="btn_marcar_tlf_bajar">Bajar</string>    
+	<string name="btn_marcar_tlf_subir">Subir</string>
+	<string name="btn_marcar_tlf_final">Final</string>
+	<string name="btn_marcar_tlf_inicio">Inicio</string>
+	<string name="btn_marcar_tlf_cero">0</string>
+	<string name="btn_marcar_tlf_uno">1</string>
+	<string name="btn_marcar_tlf_dos">2</string>
+	<string name="btn_marcar_tlf_tres">3</string>
+	<string name="btn_marcar_tlf_cuatro">4</string>
+	<string name="btn_marcar_tlf_cinco">5</string>
+	<string name="btn_marcar_tlf_seis">6</string>
+	<string name="btn_marcar_tlf_siete">7</string>
+	<string name="btn_marcar_tlf_ocho">8</string>
+	<string name="btn_marcar_tlf_nueve">9</string>
+	<string name="btn_marcar_tlf_asterisco">*</string>
+	<string name="btn_marcar_tlf_almohadilla">#</string>
+	<string name="txt_marcar_tlf_introduzca_tlf">Introduzca un teléfono</string>
+	<string name="btn_marcar_tlf_salir">Salir</string>
+	<string name="btn_empezar">Empezar</string>
+	<string name="btn_pausar">Pausar</string>
+	<string name="btn_continuar">Continuar</string>
+	<string name="btn_parar">Parar</string>
+	<string name="txt_sesion_finalizada">FINALIZADO</string>
+	<string name="btn_aceptar">Aceptar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="menu_salir_texto">¿Estás seguro de que deseas salir?</string>
+    <string name="menu_salir">Salir</string>
+    <string name="menu_parar">Parar</string>
+    <string name="menu_parar_texto">¿Estás seguro de que deseas parar y borrar todos los datos guardados?</string>
+    <string name="menu_parar_gokevolution">¿Estás seguro de que deseas parar y volver a GokEvolution al estado normal?</string>
+    <string name="txt_guardar_datos">Guardar datos</string>
+    <string name="txt_guardar_datos_texto">Si está activado se guardarán los datos en la base datos. Si no está activado, ningún dato será guardado.</string>
+    <string name="txt_eliminar_datos">Eliminar datos</string>
+    <string name="txt_eliminar_datos_texto">Eliminar todos los datos almacenados en la base de datos</string>
+    <string name="txt_ver_datos">Ver datos guardados</string>
+    <string name="txt_ver_datos_texto">Se muestran los datos de las diferentes sesiones guardadas en la base de datos</string>
+    <string name="txt_exportar_datos">Exportar datos</string>
+    <string name="txt_exportar_datos_texto">Exportar la base de datos a la memoria del teléfono/tablet. Debe realizarse la exportación después de completar todas las sesiones del día</string>
+    <string name="txt_datos_eliminados">Datos borrados</string>
+    <string name="txt_datos_exportados">Datos exportados en</string>
+    <string name="txt_borrar_datos">¿Estás seguro de que quieres borrar todos los datos?</string>
+    <string name="txt_borrar_datos_arriba">Borrar datos</string>
+    <string name="txt_borrar_pulsar_5_veces">Para borrar haga 5 clicks</string>
+    <string name="txt_exportar_pulsar_5_veces">Para exportar haga 5 clicks</string>
+    <string name="txt_no_datos_guardados">No hay datos guardados :(</string>
+    <string name="txt_no_datos_guardados_exportar">No hay datos guardados para exportar :(</string>
+    <string name="txt_error_exportar_datos">Error! No se han podido exportar los datos :(</string>
+    <string name="txt_fecha_captura_datos">Fecha captura datos EEG:</string>
+	<string name="txt_titulo_exportar_datos">Exportar</string>
+	<string name="txt_mensaje_exportar_datos">Exportando datos...</string>
+	
+	<string name="txt_titulo_cargando_datos">Cargando</string>
+	<string name="txt_mensaje_cargando_datos">Cargando imágenes y sonidos, espere por favor...</string>
+	
+    <!-- TIPOS DE SEÑALES EN GRAFICA E INICIALES -->
+    <string name="eeg_señal">Señal</string>
+    <string name="eeg_concentracion">Concentración</string>
+    <string name="eeg_relajacion">Relajación</string>
+    <string name="eeg_delta">Delta</string>
+    <string name="eeg_theta">Theta</string>
+    <string name="eeg_low_alpha">Alfa Bajo</string>
+    <string name="eeg_high_alpha">Alfa Alto</string>
+    <string name="eeg_low_beta">Beta Bajo</string>
+    <string name="eeg_high_beta">Beta Alto</string>
+    <string name="eeg_low_gamma">Gamma Bajo</string>
+    <string name="eeg_high_gamma">Gamma Alto</string>
+
+    <string name="eeg_concentracion_iniciales">CON</string>
+    <string name="eeg_relajacion_iniciales">REL</string>
+    <string name="eeg_delta_iniciales">DEL</string>
+    <string name="eeg_theta_iniciales">THE</string>
+    <string name="eeg_low_alpha_iniciales">ALB</string>
+    <string name="eeg_high_alpha_iniciales">ALA</string>
+    <string name="eeg_low_beta_iniciales">BEB</string>
+    <string name="eeg_high_beta_iniciales">BEA</string>
+    <string name="eeg_low_gamma_iniciales">GAB</string>
+    <string name="eeg_high_gamma_iniciales">GAA</string>
+    
+    <string name="segundos_graficas_defecto">50s</string>
+    
+    <!-- NOMBRE TITULO Y EJE Y DE LAS GRAFICAS -->
+    <!-- El \u0020 es para introducir otro espacio en blanco -->
+    <string name="titulo_grafica_barras">ELECTROENCEFALOGRAMA\u0020 (EEG)</string>
+    <string name="titulo_grafica_historica">HISTORICO\u0020 ELECTROENCEFALOGRAMA\u0020 (EEG)</string>
+    <string name="valores_señales_graficas">VALORES\u0020 SEÑALES\u0020 EEG</string>
+    <string name="segundos_grafica_historica">SEGUNDOS</string>
+    
+    <!-- MENSAJES DE ERROR -->
+    <string name="error_bt_no_encontrado">No se ha encontrado ningún dispositivo bluetooth</string>
+    
+    <!-- NOMBRES BOTONES MENU PRINCIPAL-->
+    <string name="btn_aplicaciones">Aplicaciones</string>
+    <string name="btn_juegos">Juegos</string>
+    <string name="btn_entrenamiento">Entrenamiento</string>
+    <string name="btn_opciones">Opciones</string>
+    <string name="btn_salir">Salir</string>
+    
+    <!-- NOMBRES BOTONES MENU APLICACIONES -->
+    <string name="btn_menu_aplicaciones_volver">Volver atrás</string>
+    <string name="btn_menu_aplicaciones_marcar_tlf">Marcar número de teléfono</string>
+    
+    <!-- NOMBRES BOTONES OPCIONES -->
+    <string name="btn_grafica_barras">Gráfica Barras</string>
+    <string name="btn_grafica_historica">Gráfica Histórica</string>
+    <string name="btn_gokevolution">GokEvolution</string>
+    
+    <!-- NOMBRES MENU OPCIONES -->
+    <string name="btn_opciones_generales">Generales</string>
+    <string name="btn_opciones_base_datos">Base datos</string>
+    <string name="btn_opciones_ayuda">Ayuda</string>
+    <string name="btn_opciones_acercade">Acerca de...</string>
+    <string name="btn_opciones_idioma">Idioma</string>
+    <string name="btn_opciones_salir">Salir</string>
+    
+    <string name="txt_sonido">Sonido</string>
+    <string name="txt_sonido_descripcion">Activar o desactivar los sonidos realizados por GokEvolution</string>
+    <string name="txt_musica">Música</string>
+    <string name="txt_musica_descripcion">Activar o desactivar la música de fondo</string>
+    
+    <!-- PREFERENCIAS -->
+    <!-- PREFERENCIAS GENERALES -->
+    <string name="txt_general_opciones_generales">Opciones Generales</string>
+    <string name="txt_general_opciones_dificultad">Dificultad</string>
+    
+    <string name="txt_general_tipo_menu">Tipo menú </string>
+    <string name="txt_general_tipo_menu_descripcion">Dos tipos de menús, sólo táctil con interfaz normal 
+        o táctil/mental con interfaz para elegir las opciones con la mente y/o haciendo click con el dedo. Esto afectará
+        únicamente al menú de las opciones por comodidad. En el resto de la aplicación se aplica la interfaz mente/click</string>
+    <string name="txt_general_vista_normal">Menú táctil</string>
+    <string name="txt_general_vista_eeg">Menú táctil/mental</string>
+    
+    <string name="txt_general_dificultad">Dificultad </string>
+    <string name="txt_general_dificultad_descripcion">La diferencia entre cada uno de los niveles es la cantidad de puntos que se suman y 
+        se restan en función del nivel de concentración que tengamos. Para un nivel fácil se sumará más y se restará menos que un nivel más difícil.
+        Para sumar puntos es necesario tener un 50%% o más de concentración. Con menos concentración restaremos puntos.</string>
+        
+    <string name="txt_general_musica">Música </string>
+    <string name="txt_general_musica_descripcion">Diferentes músicas de fondo. NOTA: Entre paréntesis pone cuando suena la canción en la serie,
+         pero no quiere decir que sea sólo en ese momento, pudiéndose repetir en otras partes.</string>
+    
+    <string name="txt_general_tiempo_sesion">Tiempo sesión </string>
+    <string name="txt_general_tiempo_sesion_descripcion">Tiempo que dura una sesión completa. Se divide en dos partes con el mismo tiempo cada una, 
+        la primera parte de concentración o desconcentración y la segunda parte de reposo.
+        </string>
+    <string name="txt_general_numero_sesiones">Número sesiones </string>
+    <string name="txt_general_numero_sesiones_descripcion">Número de sesiones que componen una prueba completa. La duración de cada sesión viene
+        indicada por la opción de tiempo de sesión 
+        </string>
+    <string name="txt_1segundos">1 segundo</string>
+    <string name="txt_2segundos">2 segundos</string>
+    <string name="txt_3segundos">3 segundos</string>
+    <string name="txt_4segundos">4 segundos</string>
+    <string name="txt_5segundos">5 segundos</string>
+    <string name="txt_6segundos">6 segundos</string>
+    <string name="txt_7segundos">7 segundos</string>
+    <string name="txt_8segundos">8 segundos</string>
+    <string name="txt_9segundos">9 segundos</string>
+    <string name="txt_10segundos">10 segundos</string>
+    <string name="txt_11segundos">11 segundos</string>
+    <string name="txt_12segundos">12 segundos</string>
+    <string name="txt_13segundos">13 segundos</string>
+    <string name="txt_14segundos">14 segundos</string>
+    <string name="txt_15segundos">15 segundos</string>
+    <string name="txt_16segundos">16 segundos</string>
+    <string name="txt_17segundos">17 segundos</string>
+    <string name="txt_18segundos">18 segundos</string>
+    <string name="txt_19segundos">19 segundos</string>
+    <string name="txt_20segundos">20 segundos</string>
+    <string name="txt_21segundos">21 segundos</string>
+    <string name="txt_22segundos">22 segundos</string>
+    <string name="txt_23segundos">23 segundos</string>
+    <string name="txt_24segundos">24 segundos</string>
+    <string name="txt_25segundos">25 segundos</string>
+    <string name="txt_26segundos">26 segundos</string>
+    <string name="txt_27segundos">27 segundos</string>
+    <string name="txt_28segundos">28 segundos</string>
+    <string name="txt_29segundos">29 segundos</string>
+    <string name="txt_31segundos">31 segundos</string>
+    <string name="txt_32segundos">32 segundos</string>
+    <string name="txt_33segundos">33 segundos</string>
+    <string name="txt_34segundos">34 segundos</string>
+    <string name="txt_35segundos">35 segundos</string>
+    <string name="txt_36segundos">36 segundos</string>
+    <string name="txt_37segundos">37 segundos</string>
+    <string name="txt_38segundos">38 segundos</string>
+    <string name="txt_39segundos">39 segundos</string>
+    <string name="txt_41segundos">41 segundos</string>
+    <string name="txt_42segundos">42 segundos</string>
+    <string name="txt_43segundos">43 segundos</string>
+    <string name="txt_44segundos">44 segundos</string>
+    <string name="txt_45segundos">45 segundos</string>
+    <string name="txt_46segundos">46 segundos</string>
+    <string name="txt_47segundos">47 segundos</string>
+    <string name="txt_48segundos">48 segundos</string>
+    <string name="txt_49segundos">49 segundos</string>
+    <string name="txt_50segundos">50 segundos</string>
+    <string name="txt_51segundos">51 segundos</string>
+    <string name="txt_52segundos">52 segundos</string>
+    <string name="txt_53segundos">53 segundos</string>
+    <string name="txt_54segundos">54 segundos</string>
+    <string name="txt_55segundos">55 segundos</string>
+    <string name="txt_56segundos">56 segundos</string>
+    <string name="txt_57segundos">57 segundos</string>
+    <string name="txt_58segundos">58 segundos</string>
+    <string name="txt_59segundos">59 segundos</string>
+    <string name="txt_60segundos_defecto">60 segundos (Por defecto)</string>
+    <string name="txt_70segundos">70 segundos</string>
+    <string name="txt_80segundos">80 segundos</string>
+    <string name="txt_100segundos">100 segundos</string>
+    <string name="txt_110segundos">110 segundos</string>
+    
+    <string name="txt_10segundos_defecto">10 segundos (Por defecto)</string>
+    
+    <string name="txt_1sesiones">1 sesión</string>
+    <string name="txt_2sesiones">2 sesiones</string>
+    <string name="txt_3sesiones">3 sesiones</string>
+    <string name="txt_4sesiones">4 sesiones</string>
+    <string name="txt_5sesiones">5 sesiones</string>
+    <string name="txt_6sesiones">6 sesiones</string>
+    <string name="txt_7sesiones">7 sesiones</string>
+    <string name="txt_8sesiones">8 sesiones</string>
+    <string name="txt_9sesiones">9 sesiones</string>
+    <string name="txt_10sesiones">10 sesiones</string>
+    <string name="txt_11sesiones">11 sesiones</string>
+    <string name="txt_12sesiones">12 sesiones</string>
+    <string name="txt_13sesiones">13 sesiones</string>
+    <string name="txt_14sesiones">14 sesiones</string>
+    <string name="txt_15sesiones_defecto">15 sesiones (Por defecto)</string>
+    <string name="txt_16sesiones">16 sesiones</string>
+    <string name="txt_17sesiones">17 sesiones</string>
+    <string name="txt_18sesiones">18 sesiones</string>
+    <string name="txt_19sesiones">19 sesiones</string>
+    <string name="txt_20sesiones">20 sesiones</string>
+    
+    <string name="txt_general_tiempo_seleccion">Tiempo selección </string>
+    <string name="txt_general_tiempo_seleccion_descripcion">Tiempo de la barra de selección (segunda barra de color azul). Es
+        el tiempo que se tarda en seleccionar una opción cuando situados sobre un botón. Este tiempo afectará a toda la aplicación.
+        Consejo: A medida que se vaya dominando el estado mental podrá bajarse el tiempo</string>
+    <string name="txt_4segundos_defecto">4 segundos (Por defecto)</string>
+    
+    <string name="txt_general_porcentaje_seleccion">Porcentaje selección</string>
+    <!-- Hay que poner %% para que muestre %, si no es asi petara :( -->
+    <string name="txt_general_porcentaje_seleccion_descripcion">Representa el %% a partir del cual empieza a subir la barra de
+        selección (azul) de un botón. Se representa con la barra de colores de la izquierda. Para %% alto hará falta tener mucha
+        concentración para poder seleccionar un botón y viceversa. </string>
+    
+    <string name="txt_general_lugar_seleccion">Botón seleccionado al inicio</string>
+    <string name="txt_general_lugar_seleccion_descripcion"> Cuando se regrese desde una pantalla hasta la actual, si está activada
+        esta opción, la selección volverá al primer botón del menú. Si no está activada, seguirá la selección por el  botón que iba
+        antes de haber entrado en la siguiente pantalla. Por defecto está activado.</string>
+    <string name="txt_10porcentaje">10%</string>
+	<string name="txt_20porcentaje">20%</string>
+	<string name="txt_30porcentaje">30%</string>
+	<string name="txt_40porcentaje">40%</string>
+	<string name="txt_50porcentaje_defecto">50% (Por defecto)</string>
+	<string name="txt_60porcentaje">60%</string>
+	<string name="txt_70porcentaje">70%</string>
+	<string name="txt_80porcentaje">80%</string>
+	<string name="txt_90porcentaje">90%</string>
+    
+    <!-- PREFERENCIAS ENTRENAMIENTO -->
+    
+    <string name="txt_entrenamiento_duracion_grafica_barras">Duración gráfica barras</string>
+    <string name="txt_entrenamiento_duracion_grafica_barras_descripcion">Tiempo que estará activada la pantalla de la gráfica de 
+        barras. Pasado este tiempo se volverá al menú anterior. Es así porque no hay otra forma de salir de esta pantalla utilizando
+         la mente. Se puede volver atrás también haciendo click en el correspondiente botón del móvil/tablet</string>
+    <string name="txt_30segundos">30 segundos</string>
+    <string name="txt_40segundos">40 segundos</string>
+    <string name="txt_50segundos_defecto">50 segundos (Por defecto)</string>
+    <string name="txt_60segundos">60 segundos (1 minuto)</string>
+    <string name="txt_90segundos">90 segundos (1.5 minutos)</string>
+    <string name="txt_120segundos">120 segundos (2 minutos)</string>
+    <string name="txt_180segundos">180 segundos (3 minutos)</string>
+    <string name="txt_300segundos">300 segundos (5 minutos)</string>
+    <string name="txt_600segundos">600 segundos (10 minutos)</string>
+    <string name="txt_1800segundos">1800 segundos (30 minutos)</string>
+    
+    <string name="txt_entrenamiento_duracion_grafica_historica">Duración gráfica histórica</string>
+    <string name="txt_entrenamiento_duracion_grafica_historica_descripcion">Tiempo que estará activada la pantalla de la gráfica histórica.
+         (Misma descripción que gráfica de barras)</string>
+    
+    <string name="txt_entrenamiento_grafica_historica_puntos">Mostrar punto en vértices</string>
+    <string name="txt_entrenamiento_grafica_historica_puntos_descripcion">Muestra un punto en cada uno de los vértices de las señales del
+         electroencefalograma. Por defecto activado</string>
+    
+    <string name="txt_entrenamiento_grafica_historica_color_relleno">Mostrar colores de relleno</string>
+    <string name="txt_entrenamiento_grafica_historica_color_relleno_descripcion">Muestra el color de relleno de cada una de las señales 
+        del electroencefalograma. Por defecto activado</string>
+    
+    <string name="txt_entrenamiento_grafica_historica_datos">Datos a mostrar</string>
+    <string name="txt_entrenamiento_grafica_historica_datos_descripcion">Elegimos la cantidad de datos (en segundos) a mostrar al
+        mismo tiempo en la gráfica histórica  </string>
+    
+    <string name="txt_entrenamiento_grafica_historica_datos_8_defecto">8 (Por defecto)</string>
+    
+    <!-- DIFICULTAD -->
+    <string name="opciones_dificultad_facil">Fácil (2min)</string>
+    <string name="opciones_dificultad_normal">Normal (2min y 43s)</string>
+    <string name="opciones_dificultad_dificil">Difícil (3min y 49s)</string>
+    
+    <!-- MUSICA -->
+    <string name="musica_celula_1">Célula 1</string>
+    <string name="musica_celula_2">Célula 2</string>
+    <string name="musica_celula_3">Célula 3</string>
+    <string name="musica_freezer">Freezer</string>
+    <string name="musica_resumen_capitulo">Resumen capítulo</string>
+    <string name="musica_majin_boo">Majin Boo</string>
+    <string name="musica_gokevolution_entrena_kamisama">GokEvolution entrena con Kamisama</string>
+    <string name="musica_vegeta">Vegeta</string>
+    <string name="musica_ejercito_rojo">Ejército Rojo</string>
+    <string name="musica_piccolo">Piccolo</string>
+    
+    <!-- MENSAJES AMARINO -->
+    <string name="instructions">This example shows how you can control your Arduino with a simple interface.</string>
+
+    <string name="device_address">Set BT Device Address</string>
+    <string name="set_device_address">Please enter the address of your Bluetooth module on your Arduino.</string>
+    <string name="device_address_format_error">Address needs to be in the following format: xx:xx:xx:xx:xx:xx\n\ne.g. 00:06:66:03:73:7B</string>
+    
+    <string name="monitoring">Monitoring</string>
+    <string name="add_bt_device">Add BT Device</string>
+    <string name="add_event">Add Event</string>
+	<string name="settings">Settings</string>
+	<string name="no_devices">First you have to add a new Bluetooth device.</string>
+	<string name="no_events">No events selected!</string>
+	<string name="connect">Connect</string>
+	<string name="connected">Connected</string>
+	<string name="disconnect">Disconnect</string>
+	<string name="disconnected">Disconnected</string>
+	<string name="connecting">Connecting</string>
+	<string name="remove">Remove</string>
+	<string name="remove_all">Remove All</string>
+	<string name="force_disable_all">Force Disable All</string>
+	<string name="enable">Enable</string>
+	<string name="disable">Disable</string>
+	<string name="disabled">disabled</string>
+	<string name="force_enable">Force Enable</string>
+	<string name="force_disable">Force Disable</string>
+	<string name="no_plugins_installed">There are no Amarino plug-ins installed on your phone.
+	\n\nInstall the AmarinoPlugInBundle to get some events to start with.</string>
+	<string name="plugin_info_msg">This is a plug-in for Amarino 2.0 and not a standalone application.
+	\n\nYou can add this plug-in to Amarino, by selecting \'Add Event\' within Amarino</string>
+	
+
+	<string name="flag_btn">Flag: %s</string>
+	
+	<!-- Context menu MainScreen -->
+	<string name="show_events">Show Events</string>
+	<string name="remove_device">Remove Device</string>
+	<string name="menu_about">About</string>
+
+	<!-- Service messages -->
+	<string name="service_started_title">background service started</string>
+	<string name="service_notify_text">Amarino is running</string>
+	<string name="service_active_connections">Active connections: %s</string>
+	<string name="service_no_active_connections">No active connections</string>
+	<string name="service_connecting_to">Connecting to %s</string>
+	<string name="service_connection_to_failed">Connection failed.</string>
+	<string name="service_connected_to">Connected to %s</string>
+	<string name="service_disconnected_from">Disconnected from %s</string>
+	<string name="service_pairing_request">Pairing request for %s\n\nPull down your status bar to enter the pin.</string>
+	<string name="service_address_invalid">Given address [%s] is invalid. Must be of form xx:xx:xx:xx:xx:xx</string>
+	<string name="service_message_to_send">message to send: %s</string>
+	<string name="service_ready_to_shutdown">service ready to shutdown</string>
+	
+	<!-- Titles -->
+	<string name="monitoring_title">"Monitoring"</string>
+	<string name="settings_title">"Settings"</string>
+	
+	<string name="about_msg">Amarino 2.0 - A prototyping platform for Android and Arduino
+	\n\n\u00A9 2010 by Bonifaz Kaufmann
+	\n\nhttp://www.amarino-toolkit.net
+	
+	\n\nThanks to Stefano Sanna and Emanuele Di Saverio, since Amarino uses
+	their Android Bluetooth API which can be found at
+	\nhttp://code.google.com/p/android-bluetooth/</string>
+	
+	<string name="about_changelog"><b>Release Notes</b>
+	\n0.55
+	\n - fixed bug in MessageBuilder. Flags were converted to numbers in some cases.
+	\n0.53
+	\n - fixed bug in Amarino API (in Amarino.java), device address was not sent when using sendDataToArduino() function
+	\n\n0.52
+	\n - added fall back when UUID does not work, it will try to use the good old port 1
+	\n\n0.5
+	\n - uses UUID (instead of always port 1) to determine which port to use when connecting to a Bluetooth module
+	\n - added release notes dialog to show up when a new Amarino version has been installed
+	\n - shows a message when no plug-ins are installed and user tries to add an event
+	</string>
+</resources>

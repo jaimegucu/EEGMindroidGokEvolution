@@ -1,0 +1,380 @@
+package com.app.eeg_mindroid;
+
+import java.text.DecimalFormat;
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.ParsePosition;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import Utils.Amarino.at.abraxas.amarino.AmarinoConfigured;
+import Utils.Amarino.at.abraxas.amarino.Amarino;
+
+import com.androidplot.xy.BarFormatter;
+import com.androidplot.xy.BarRenderer;
+import com.androidplot.xy.BoundaryMode;
+import com.androidplot.xy.SimpleXYSeries;
+import com.androidplot.xy.XYPlot;
+import com.androidplot.xy.XYStepMode;
+import com.app.eeg_mindroid.AmarinoListenerConexionBT.MindListenerBT;
+
+public class GraficaBarras extends Activity implements MindListenerBT {
+	private static final String TAG = "EEG_Mindroid";
+	
+	private ImageView imagenCalidadConexion;
+	
+	// Clase para mostrar la grafica de barras
+	private XYPlot graficaSeñalesBarras;
+	
+	// Variable para guardar los nombres de las señales eeg a mostrar en tabla
+	private SimpleXYSeries datosGraficaConcentracion;
+	private SimpleXYSeries datosGraficaRelajacion;
+	private SimpleXYSeries datosGraficaDelta;
+	private SimpleXYSeries datosGraficaTheta;
+	private SimpleXYSeries datosGraficaLowAlpha;
+	private SimpleXYSeries datosGraficaHighAlpha;
+	private SimpleXYSeries datosGraficaLowBeta;
+	private SimpleXYSeries datosGraficaHighBeta;
+	private SimpleXYSeries datosGraficaLowGamma;
+	private SimpleXYSeries datosGraficaHighGamma;
+	
+	// Aqui guardaremos la serie de señales
+	private List<Integer> dataSeries;
+	
+	// Para filtrar la señal
+	private Integer señalFiltrada;
+	
+	// Contador para posicionar bien los nombres de las señales en la grafica
+	private static int contadorNombresSeñales = 0;
+	
+	// IMPORTANTE: Array para guardar los valores maximos de cada señal EEG. Lo que haremos sera
+	// guardar el maximo valor de cada señal EEG para representar la señal en comparacion con ella
+	// misma. Por ej, si la primera vez llega a 200, marcara un 100%, si la segunda vez llega a 400,
+	// guardaremos este valor como maximo y para la siguiente vez el 100% sera 400 y todo lo que sea
+	// inferior se hara la ponderacion (regla de 3) 
+	// Es asi porque segun pone en la documentacion de Neurosky, las señales EEG entre ellas NO guardan
+	// ninguna relacion y he visto otro software que lo hace de esta manera. El orden es:
+	// delta, theta, low alpha, high alpha, low beta, high beta, low gamma, high gamma
+	private Integer valoresMaximosEEG[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.grafica_barras);
+        // Iniciamos la conexion bluetooth
+     	//AmarinoListenerConexionBT.onCreate(this, this);
+     	
+        imagenCalidadConexion = (ImageView) findViewById(R.id.imagenCalidadConexion);
+        // Inicializamos la serie de datos a guardar
+        dataSeries = new ArrayList<Integer>();
+
+        // Configuracion de las series que apareceran en las graficas
+        //datosGrafica = new SimpleXYSeries("Datos grafica");
+
+        datosGraficaConcentracion = new SimpleXYSeries("");
+        datosGraficaRelajacion = new SimpleXYSeries("");
+        datosGraficaDelta = new SimpleXYSeries("");
+        datosGraficaTheta = new SimpleXYSeries("");
+        datosGraficaLowAlpha = new SimpleXYSeries("");
+        datosGraficaHighAlpha = new SimpleXYSeries("");
+        datosGraficaLowBeta = new SimpleXYSeries("");
+        datosGraficaHighBeta = new SimpleXYSeries("");
+        datosGraficaLowGamma = new SimpleXYSeries("");
+        datosGraficaHighGamma = new SimpleXYSeries("");
+        
+        // Añadimos a la pantalla la grafica
+        graficaSeñalesBarras = (XYPlot) findViewById(R.id.graficaSeñalesBarrasEEG);
+        // Añadimos las series a la grafica. El primer valro del BarFormatter es el color
+        // de relleno de la barra de la grafica y el segundo el del borde
+        // Concentracion color GRIS
+        graficaSeñalesBarras.addSeries(datosGraficaConcentracion, new BarFormatter(
+        		Color.argb(255, 96, 96, 96), Color.rgb(0, 80, 0)));
+        // Relajacion color NEGRO
+        graficaSeñalesBarras.addSeries(datosGraficaRelajacion, new BarFormatter(
+        		Color.argb(255, 0, 0, 0), Color.rgb(0, 80, 0)));
+        // Delta color AMARILLO
+        graficaSeñalesBarras.addSeries(datosGraficaDelta, new BarFormatter(
+        		Color.argb(255, 255, 255, 0), Color.rgb(0, 80, 0)));
+        // Tetha color NARANJA
+        graficaSeñalesBarras.addSeries(datosGraficaTheta, new BarFormatter(
+        		Color.argb(255, 255, 128, 0), Color.rgb(0, 80, 0)));
+        // Low Alpha color VERDE 
+        graficaSeñalesBarras.addSeries(datosGraficaLowAlpha, new BarFormatter(
+        		Color.argb(255, 0, 204, 0), Color.rgb(0, 80, 0)));
+        // High Alpha color VERDE OSCURO
+        graficaSeñalesBarras.addSeries(datosGraficaHighAlpha, new BarFormatter(
+        		Color.argb(255, 0, 153, 0), Color.rgb(0, 80, 0)));
+        // Low Beta color VIOLETA
+        graficaSeñalesBarras.addSeries(datosGraficaLowBeta, new BarFormatter(
+        		Color.argb(255, 255, 0, 255), Color.rgb(0, 80, 0)));
+        // High Beta color MORADO
+        graficaSeñalesBarras.addSeries(datosGraficaHighBeta, new BarFormatter(
+        		Color.argb(255, 153, 0, 153), Color.rgb(0, 80, 0)));
+        // Low Gamma color AZUL
+        graficaSeñalesBarras.addSeries(datosGraficaLowGamma, new BarFormatter(
+        		Color.argb(255, 0, 102, 204), Color.rgb(0, 80, 0)));
+        // High Gamma color AZUL OSCURO
+        graficaSeñalesBarras.addSeries(datosGraficaHighGamma, new BarFormatter(
+        		Color.argb(255, 0, 0, 153), Color.rgb(0, 80, 0)));
+        
+        // Nombre grafica
+        graficaSeñalesBarras.setTitle(getString(R.string.titulo_grafica_barras));
+        // Nombre del eje X vacio
+        graficaSeñalesBarras.setDomainLabel("");
+        // Nombre tipos de señales 
+        graficaSeñalesBarras.setRangeLabel(getString(R.string.valores_señales_graficas));
+        
+        // Ocultar leyenda
+        graficaSeñalesBarras.getLayoutManager()
+        .remove(graficaSeñalesBarras.getLegendWidget());
+        // Valores limites del eje Y (0-100)
+        graficaSeñalesBarras.setRangeBoundaries(0, 100, BoundaryMode.FIXED);
+        // Incrementamos de 10 en 10 los valores del eje Y
+        graficaSeñalesBarras.setRangeStep(XYStepMode.INCREMENT_BY_VAL, 10);
+        // Formateamos las grafica para valores enteros
+        graficaSeñalesBarras.getGraphWidget().setRangeValueFormat(new DecimalFormat("#####")); 
+        // Margenes en la grafica para visualizarla bien (modifico arriba y derecha)
+        graficaSeñalesBarras.setGridPadding(35, 5, 35, 0);
+        graficaSeñalesBarras.setPlotPadding(3, 10, 3, 0);
+        // Border activado
+        graficaSeñalesBarras.setDrawBorderEnabled(true);
+        
+        // Nombres de las señales que apareceran en el eje X
+        graficaSeñalesBarras.setDomainValueFormat(new Format() {
+        	
+        	@Override
+            public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
+	            // using num.intValue() will floor the value, so we add 0.5 to round instead:
+	            switch(contadorNombresSeñales) {
+	                case 0:
+	                    toAppendTo.append(getString(R.string.eeg_concentracion));
+	                    // Vamos sumando uno al contador hasta que se escriben todos los nombres
+	                	// en el eje X de la grafica
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 1:
+	                    toAppendTo.append(getString(R.string.eeg_relajacion));
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 2:
+	                    toAppendTo.append(getString(R.string.eeg_delta));
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 3:
+	                    toAppendTo.append(getString(R.string.eeg_theta));
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 4:
+	                    toAppendTo.append(getString(R.string.eeg_low_alpha));
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 5:
+	                    toAppendTo.append(getString(R.string.eeg_high_alpha));
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 6:
+	                    toAppendTo.append(getString(R.string.eeg_low_beta));
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 7:
+	                    toAppendTo.append(getString(R.string.eeg_high_beta));
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 8:
+	                    toAppendTo.append(getString(R.string.eeg_low_gamma));
+	                    contadorNombresSeñales++;
+	                    break;
+	                case 9:
+	                    toAppendTo.append(getString(R.string.eeg_high_gamma));
+	                    // Volvemos al principio
+	                    contadorNombresSeñales = 0;
+	                    break;
+	                default:
+	                	
+	            }
+	            return toAppendTo;
+        	}
+        
+        	@Override
+	        public Object parseObject(String source, ParsePosition pos) {
+	            return null;  // We don't use this so just return null for now.
+	        }
+        });
+        
+        // Transformamos la grafica XYPlot en BarRenderer para el GROSOR de las barras
+        BarRenderer barRendererGrafica = (BarRenderer) graficaSeñalesBarras.getRenderer(BarRenderer.class);
+        barRendererGrafica.setBarWidth(73);
+        
+        // Tamaño de las letras del titulo
+        graficaSeñalesBarras.getTitleWidget().getLabelPaint().setTextSize(18);
+        // Damos una medida de sobra para almacenar el texto del rango para cuando cambie de idioma (EN ANCHO)
+        graficaSeñalesBarras.getTitleWidget().setWidth(2000);
+        // Margenes
+        graficaSeñalesBarras.getTitleWidget().setMarginTop(11);
+        graficaSeñalesBarras.getTitleWidget().setMarginBottom(10);
+        // Distancia de las letras del rango hacia la derecha
+        graficaSeñalesBarras.getRangeLabelWidget().setWidth(40);
+        
+        // Damos una medida de sobra para almacenar el texto del rango para cuando cambie de idioma (EN ALTO)
+        graficaSeñalesBarras.getRangeLabelWidget().setHeight(2000);
+        // Tamaño de las letras del rango
+        graficaSeñalesBarras.getRangeLabelWidget().getLabelPaint().setTextSize(18);
+    }
+    
+    @Override
+    public void onResume() {
+    	super.onResume();
+    	// Iniciamos la conexion bluetooth
+    	AmarinoListenerConexionBT.onResume(this, this);
+    }
+    
+    @Override
+	protected void onPause() {
+		super.onPause();
+		// Finalizamos la conexion bluetooth
+		AmarinoListenerConexionBT.onPause(this, this);
+	}
+    
+    // Buscar Bluetooth
+    private void buscarBlueetooth() {
+    	// Referencia al bluetooth
+        /*mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        
+        // Si el dispositivo NO tiene bluetooth :(
+        if(mBluetoothAdapter == null)
+        	txtIdBluetooth.setText(R.string.error_bt_no_encontrado);
+        else {
+	        // Si el bluetooth esta apagado muestro la opcion de encenderlo
+	        if(!mBluetoothAdapter.isEnabled()) {
+	            Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+	            startActivityForResult(enableBluetooth,0);
+	        }
+        }*/
+    }
+    
+    // Metodo para poder pintar la grafica ya que no esta implementado en ninguna libreria :(
+    private List<Integer> pintaDatosGrafica(int posicion, Integer valor) {	
+    	// Borramos la lista de datos
+		dataSeries.clear();
+		
+		// Si es el primer dato, invertimos el orden de pintado. El añadir el 0 es porque la
+		// libreria NO acepta una lista de un unico valor :(
+		
+		if(posicion == 1) {
+			dataSeries.add(valor);
+			dataSeries.add(0);
+		// Si son los siguientes, lo que hacemos es añadir varios 0 a la lista, de manera que
+		// NO existan dos señales que esten en la misma posicion de la lista para asi mostrar
+		// las barras en diferentes posiciones (si no es asi, se pisaria una barra con otra)
+		} else {
+			// Pintamos hasta posicion-1, ya que la posicion final tendra el valor de la señal
+			for(int i=0;i<posicion-1;i++) 
+				dataSeries.add(0);
+			
+			// Si NO es la posicion de la relajacion (es decir, las señales EEG)
+			if(posicion != 2) {
+				// Restamos 3 para que coincida con el array
+				if(valor > valoresMaximosEEG[posicion-3]) {
+					valoresMaximosEEG[posicion-3] = valor;
+					// Añadimos 100 para que llegue al limite de la grafica
+					dataSeries.add(100);
+				} else {
+					// Regla de 3 para calcular el valor de 0 a 100 de la grafica
+					dataSeries.add((valor*100)/valoresMaximosEEG[posicion-3]);
+				}
+			} else {
+				dataSeries.add(valor);
+			}
+		}
+		
+		// Como es el ultimo valor a añadir, pintamos los datos en la grafica
+		if(posicion == 10)
+			graficaSeñalesBarras.redraw();
+		
+		return dataSeries;
+    }
+    
+    public void pulsarBotonBluetooth(View view) {
+    	// Iniciamos el bluetooth
+    	//buscarBlueetooth();
+    }
+
+	public void newSignalValue(Integer value) {
+		// Log.d("EEEE:", "SEÑAL: " + señalFiltrada);
+		// Elejimos el color de la imagen de la calidad de conexion.
+		// 0 = buena, 200 = mala, resto = regular
+		switch(value) {
+			case 0:
+				imagenCalidadConexion.setImageResource(R.drawable.circle_green);
+				break;
+			case 200:
+				imagenCalidadConexion.setImageResource(R.drawable.circle_red);
+				break;
+			default:
+				imagenCalidadConexion.setImageResource(R.drawable.circle_yellow);
+				break;
+		}
+	}
+	
+	public void newConcentrationValue(String value) {
+		datosGraficaConcentracion.setModel(pintaDatosGrafica(
+				1, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newRelaxValue(String value) {
+		datosGraficaRelajacion.setModel(pintaDatosGrafica(
+				2, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newDeltaValue(String value) {
+		datosGraficaDelta.setModel(pintaDatosGrafica(
+				3, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newThetaValue(String value) {
+		datosGraficaTheta.setModel(pintaDatosGrafica(
+				4, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newLowAlphaValue(String value) {
+		datosGraficaLowAlpha.setModel(pintaDatosGrafica(
+				5, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newHighAlphaValue(String value) {
+		datosGraficaHighAlpha.setModel(pintaDatosGrafica(
+				6, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newLowBetaValue(String value) {
+		datosGraficaLowBeta.setModel(pintaDatosGrafica(
+				7, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newHighBetaValue(String value) {
+		datosGraficaHighBeta.setModel(pintaDatosGrafica(
+				8, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newLowGammaValue(String value) {
+		datosGraficaLowGamma.setModel(pintaDatosGrafica(
+				9, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+
+	public void newHighGammaValue(String value) {
+		datosGraficaHighGamma.setModel(pintaDatosGrafica(
+				10, Integer.valueOf(value)), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+	}
+}

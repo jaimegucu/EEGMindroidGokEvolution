@@ -1,0 +1,446 @@
+package com.app.eeg_mindroid;
+
+import java.text.DecimalFormat;
+import java.util.LinkedList;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+import com.androidplot.ui.AnchorPosition;
+import com.androidplot.xy.BoundaryMode;
+import com.androidplot.xy.LineAndPointFormatter;
+import com.androidplot.xy.RectRegion;
+import com.androidplot.xy.SimpleXYSeries;
+import com.androidplot.xy.XLayoutStyle;
+import com.androidplot.xy.XYPlot;
+import com.androidplot.xy.XYRegionFormatter;
+import com.androidplot.xy.XYStepMode;
+import com.androidplot.xy.YLayoutStyle;
+import com.app.eeg_mindroid.AmarinoListenerConexionBT.MindListenerBT;
+
+public class GraficaHistorica extends Activity implements MindListenerBT {
+	// PROPIEDADES A CAMBIAR DESDE LAS OPCIONES
+	private boolean dibujarPuntos = true;
+	private boolean dibujarRelleno = false;
+	
+	// Tamaño del historial de la grafica
+	private static final int TAMAÑO_HISTORICO = 10;
+	// Imagen calidad de conexion
+	private ImageView imagenCalidadConexion;
+	// Grafica Historica
+	private XYPlot graficaSeñalesHistorica;
+	// Variable para guardar los nombres de las señales eeg a mostrar en tabla
+	private SimpleXYSeries datosGraficaConcentracion;
+	private SimpleXYSeries datosGraficaRelajacion;
+	private SimpleXYSeries datosGraficaDelta;
+	private SimpleXYSeries datosGraficaTheta;
+	private SimpleXYSeries datosGraficaLowAlpha;
+	private SimpleXYSeries datosGraficaHighAlpha;
+	private SimpleXYSeries datosGraficaLowBeta;
+	private SimpleXYSeries datosGraficaHighBeta;
+	private SimpleXYSeries datosGraficaLowGamma;
+	private SimpleXYSeries datosGraficaHighGamma;
+	
+	// Listas para guardar los datos historicos
+	private LinkedList<Number> listaDatosGraficaConcentracion;
+    private LinkedList<Number> listaDatosGraficaRelajacion;
+    private LinkedList<Number> listaDatosGraficaDelta;
+    private LinkedList<Number> listaDatosGraficaTheta;
+    private LinkedList<Number> listaDatosGraficaLowAlpha;
+    private LinkedList<Number> listaDatosGraficaHighAlpha;
+    private LinkedList<Number> listaDatosGraficaLowBeta;
+    private LinkedList<Number> listaDatosGraficaHighBeta;
+    private LinkedList<Number> listaDatosGraficaLowGamma;
+    private LinkedList<Number> listaDatosGraficaHighGamma;
+    
+    // Variable que usare para formatear los datos a mostrar
+    private LineAndPointFormatter formateoGlobal;
+    
+    // Aqui guardaremos los datos historicos en el orden de llamada que ya sabemos
+    private Number[] datosSerieHistorica = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    
+    // Es asi porque segun pone en la documentacion de Neurosky, las señales EEG entre ellas NO guardan
+ 	// ninguna relacion y he visto otro software que lo hace de esta manera. El orden es:
+ 	// delta, theta, low alpha, high alpha, low beta, high beta, low gamma, high gamma
+ 	private Integer valoresMaximosEEG[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.grafica_historica);
+		
+		imagenCalidadConexion = (ImageView) findViewById(R.id.imagenCalidadConexion);
+		
+		datosGraficaConcentracion = new SimpleXYSeries(getString(R.string.eeg_concentracion_iniciales));
+        datosGraficaRelajacion = new SimpleXYSeries(getString(R.string.eeg_relajacion_iniciales));
+        datosGraficaDelta = new SimpleXYSeries(getString(R.string.eeg_delta_iniciales));
+        datosGraficaTheta = new SimpleXYSeries(getString(R.string.eeg_theta_iniciales));
+        datosGraficaLowAlpha = new SimpleXYSeries(getString(R.string.eeg_low_alpha_iniciales));
+        datosGraficaHighAlpha = new SimpleXYSeries(getString(R.string.eeg_high_alpha_iniciales));
+        datosGraficaLowBeta = new SimpleXYSeries(getString(R.string.eeg_low_beta_iniciales));
+        datosGraficaHighBeta = new SimpleXYSeries(getString(R.string.eeg_high_beta_iniciales));
+        datosGraficaLowGamma = new SimpleXYSeries(getString(R.string.eeg_low_gamma_iniciales));
+        datosGraficaHighGamma = new SimpleXYSeries(getString(R.string.eeg_high_gamma_iniciales));
+        
+        listaDatosGraficaConcentracion = new LinkedList<Number>();
+        listaDatosGraficaRelajacion = new LinkedList<Number>();
+        listaDatosGraficaDelta = new LinkedList<Number>();
+        listaDatosGraficaTheta = new LinkedList<Number>();
+        listaDatosGraficaLowAlpha = new LinkedList<Number>();
+        listaDatosGraficaHighAlpha = new LinkedList<Number>();
+        listaDatosGraficaLowBeta = new LinkedList<Number>();
+        listaDatosGraficaHighBeta = new LinkedList<Number>();
+        listaDatosGraficaLowGamma = new LinkedList<Number>();
+        listaDatosGraficaHighGamma = new LinkedList<Number>();
+        
+        // Añadimos a la pantalla la grafica
+        graficaSeñalesHistorica = (XYPlot) findViewById(R.id.graficaSeñalesHistoricaEEG);
+        
+        // Añadimos las series
+        if(dibujarRelleno) {
+        	if(dibujarPuntos) {
+        		// Concentracion color GRIS
+                graficaSeñalesHistorica.addSeries(datosGraficaConcentracion,  
+                		new LineAndPointFormatter(Color.rgb(96, 96, 96), Color.RED, Color.argb(50, 96, 96, 96)));
+                // Relajacion color NEGRO
+                graficaSeñalesHistorica.addSeries(datosGraficaRelajacion, 
+                		new LineAndPointFormatter(Color.rgb(0, 0, 0), Color.RED, Color.argb(50, 0, 0, 0)));
+                // Delta color AMARILLO
+                graficaSeñalesHistorica.addSeries(datosGraficaDelta, 
+                		new LineAndPointFormatter(Color.rgb(255, 255, 0), Color.BLACK, Color.argb(50, 255, 255, 0)));
+                // Tetha color NARANJA
+                graficaSeñalesHistorica.addSeries(datosGraficaTheta, 
+                		new LineAndPointFormatter(Color.rgb(255, 128, 0), Color.BLACK, Color.argb(50, 255, 128, 0)));
+                // Low Alpha color VERDE 
+                graficaSeñalesHistorica.addSeries(datosGraficaLowAlpha, 
+                		new LineAndPointFormatter(Color.rgb(0, 204, 0), Color.BLACK, Color.argb(50, 0, 204, 0)));
+                // High Alpha color VERDE OSCURO
+                graficaSeñalesHistorica.addSeries(datosGraficaHighAlpha, 
+                		new LineAndPointFormatter(Color.rgb(0, 153, 0), Color.BLACK, Color.argb(50, 0, 153, 0)));
+                // Low Beta color VIOLETA
+                graficaSeñalesHistorica.addSeries(datosGraficaLowBeta, 
+                		new LineAndPointFormatter(Color.rgb(255, 0, 255), Color.BLACK, Color.argb(50, 255, 0, 255)));
+                // High Beta color MORADO
+                graficaSeñalesHistorica.addSeries(datosGraficaHighBeta, 
+                		new LineAndPointFormatter(Color.rgb(153, 0, 153), Color.BLACK, Color.argb(50, 153, 0, 153)));
+                // Low Gamma color AZUL
+                graficaSeñalesHistorica.addSeries(datosGraficaLowGamma, 
+                		new LineAndPointFormatter(Color.rgb(0, 102, 204), Color.BLACK, Color.argb(50, 0, 102, 204)));
+                // High Gamma color AZUL OSCURO
+                graficaSeñalesHistorica.addSeries(datosGraficaHighGamma, 
+                		new LineAndPointFormatter(Color.rgb(0, 0, 153), Color.BLACK, Color.argb(50, 0, 0, 153)));
+        	} else {
+        		// Concentracion color GRIS
+        		formateoGlobal = new LineAndPointFormatter(Color.rgb(96, 96, 96), Color.RED, Color.argb(50, 96, 96, 96));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaConcentracion, formateoGlobal);
+                // Relajacion color NEGRO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 0, 0), Color.RED, Color.argb(50, 0, 0, 0));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaRelajacion, formateoGlobal);
+                // Delta color AMARILLO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(255, 255, 0), Color.BLACK, Color.argb(50, 255, 255, 0));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaDelta, formateoGlobal);
+                // Tetha color NARANJA
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(255, 128, 0), Color.BLACK, Color.argb(50, 255, 128, 0));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaTheta, formateoGlobal);
+                // Low Alpha color VERDE 
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 204, 0), Color.BLACK, Color.argb(50, 0, 204, 0));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaLowAlpha, formateoGlobal);
+                // High Alpha color VERDE OSCURO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 153, 0), Color.BLACK, Color.argb(50, 0, 153, 0));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaHighAlpha, formateoGlobal);
+                // Low Beta color VIOLETA
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(255, 0, 255), Color.BLACK, Color.argb(50, 255, 0, 255));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaLowBeta, formateoGlobal);
+                // High Beta color MORADO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(153, 0, 153), Color.BLACK, Color.argb(50, 153, 0, 153));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaHighBeta, formateoGlobal);
+                // Low Gamma color AZUL
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 102, 204), Color.BLACK, Color.argb(50, 0, 102, 204));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaLowGamma, formateoGlobal);
+                // High Gamma color AZUL OSCURO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 0, 153), Color.BLACK, Color.argb(50, 0, 0, 153));
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaHighGamma, formateoGlobal);
+        	}
+        	
+        } else {
+        	if(dibujarPuntos) {
+        		// Concentracion color GRIS
+                graficaSeñalesHistorica.addSeries(datosGraficaConcentracion,  
+                		new LineAndPointFormatter(Color.rgb(96, 96, 96), Color.RED, null));
+                // Relajacion color NEGRO
+                graficaSeñalesHistorica.addSeries(datosGraficaRelajacion, 
+                		new LineAndPointFormatter(Color.rgb(0, 0, 0), Color.RED,null));
+                // Delta color AMARILLO
+                graficaSeñalesHistorica.addSeries(datosGraficaDelta, 
+                		new LineAndPointFormatter(Color.rgb(255, 255, 0), Color.BLACK, null));
+                // Tetha color NARANJA
+                graficaSeñalesHistorica.addSeries(datosGraficaTheta, 
+                		new LineAndPointFormatter(Color.rgb(255, 128, 0), Color.BLACK, null));
+                // Low Alpha color VERDE 
+                graficaSeñalesHistorica.addSeries(datosGraficaLowAlpha, 
+                		new LineAndPointFormatter(Color.rgb(0, 204, 0), Color.BLACK, null));
+                // High Alpha color VERDE OSCURO
+                graficaSeñalesHistorica.addSeries(datosGraficaHighAlpha, 
+                		new LineAndPointFormatter(Color.rgb(0, 153, 0), Color.BLACK, null));
+                // Low Beta color VIOLETA
+                graficaSeñalesHistorica.addSeries(datosGraficaLowBeta, 
+                		new LineAndPointFormatter(Color.rgb(255, 0, 255), Color.BLACK, null));
+                // High Beta color MORADO
+                graficaSeñalesHistorica.addSeries(datosGraficaHighBeta, 
+                		new LineAndPointFormatter(Color.rgb(153, 0, 153), Color.BLACK, null));
+                // Low Gamma color AZUL
+                graficaSeñalesHistorica.addSeries(datosGraficaLowGamma, 
+                		new LineAndPointFormatter(Color.rgb(0, 102, 204), Color.BLACK, null));
+                // High Gamma color AZUL OSCURO
+                graficaSeñalesHistorica.addSeries(datosGraficaHighGamma, 
+                		new LineAndPointFormatter(Color.rgb(0, 0, 153), Color.BLACK, null));
+        	} else {
+        		// Concentracion color GRIS
+        		formateoGlobal = new LineAndPointFormatter(Color.rgb(96, 96, 96), Color.RED, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaConcentracion, formateoGlobal);
+                // Relajacion color NEGRO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 0, 0), Color.RED, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaRelajacion, formateoGlobal);
+                // Delta color AMARILLO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(255, 255, 0), Color.BLACK, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaDelta, formateoGlobal);
+                // Tetha color NARANJA
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(255, 128, 0), Color.BLACK, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaTheta, formateoGlobal);
+                // Low Alpha color VERDE 
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 204, 0), Color.BLACK, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaLowAlpha, formateoGlobal);
+                // High Alpha color VERDE OSCURO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 153, 0), Color.BLACK, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaHighAlpha, formateoGlobal);
+                // Low Beta color VIOLETA
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(255, 0, 255), Color.BLACK, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaLowBeta, formateoGlobal);
+                // High Beta color MORADO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(153, 0, 153), Color.BLACK, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaHighBeta, formateoGlobal);
+                // Low Gamma color AZUL
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 102, 204), Color.BLACK, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaLowGamma, formateoGlobal);
+                // High Gamma color AZUL OSCURO
+                formateoGlobal = new LineAndPointFormatter(Color.rgb(0, 0, 153), Color.BLACK, null);
+        		formateoGlobal.setVertexPaint(null);
+                graficaSeñalesHistorica.addSeries(datosGraficaHighGamma, formateoGlobal);
+        	}
+        }
+        
+        
+        // Nombre grafica
+        graficaSeñalesHistorica.setTitle(getString(R.string.titulo_grafica_historica));
+        // Nombre del eje X vacio
+        graficaSeñalesHistorica.setDomainLabel(getString(R.string.segundos_grafica_historica));
+        // Nombre tipos de señales 
+        graficaSeñalesHistorica.setRangeLabel(getString(R.string.valores_señales_graficas));
+        // Valores limites del eje Y (0-100)
+        graficaSeñalesHistorica.setRangeBoundaries(0, 100, BoundaryMode.FIXED);
+        // Incrementamos de 10 en 10 los valores del eje Y
+        graficaSeñalesHistorica.setRangeStep(XYStepMode.INCREMENT_BY_VAL, 10);
+        // Valores del eje X segun el TAMAÑO HISTORICO
+        graficaSeñalesHistorica.setDomainBoundaries(1, TAMAÑO_HISTORICO-2, BoundaryMode.FIXED);
+        // Incrementamos los valores del eje X de 1 en 1
+        graficaSeñalesHistorica.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
+        // Formateamos las grafica para valores enteros (eje Y)
+        graficaSeñalesHistorica.getGraphWidget().setRangeValueFormat(new DecimalFormat("#####"));
+        // Formateamos las grafica para valores enteros (eje X)
+        graficaSeñalesHistorica.getGraphWidget().setDomainValueFormat(new DecimalFormat("#####"));
+        // Margenes en la grafica para visualizarla bien (modifico arriba y derecha)
+        graficaSeñalesHistorica.setGridPadding(35, 5, 35, 0);
+        graficaSeñalesHistorica.setPlotPadding(3, 10, 3, 10);
+        // Border activado
+        graficaSeñalesHistorica.setDrawBorderEnabled(true);
+        
+        // Tamaño de las letras del titulo
+        graficaSeñalesHistorica.getTitleWidget().getLabelPaint().setTextSize(18);
+        // Tamaño de las letras eje X
+        graficaSeñalesHistorica.getDomainLabelWidget().getLabelPaint().setTextSize(15);
+        graficaSeñalesHistorica.getDomainLabelWidget().setWidth(120);
+        graficaSeñalesHistorica.getDomainLabelWidget().setMarginLeft(0);
+        graficaSeñalesHistorica.getDomainLabelWidget().setPaddingLeft(0);
+        // Damos una medida de sobra para almacenar el texto del rango para cuando cambie de idioma (EN ANCHO)
+        graficaSeñalesHistorica.getTitleWidget().setWidth(2000);
+        // Margenes
+        graficaSeñalesHistorica.getTitleWidget().setMarginTop(11);
+        graficaSeñalesHistorica.getTitleWidget().setMarginBottom(10);
+        // Distancia de las letras del rango hacia la derecha
+        graficaSeñalesHistorica.getRangeLabelWidget().setWidth(40);
+        
+        // Damos una medida de sobra para almacenar el texto del rango para cuando cambie de idioma (EN ALTO)
+        graficaSeñalesHistorica.getRangeLabelWidget().setHeight(2000);
+        // Tamaño de las letras del rango
+        graficaSeñalesHistorica.getRangeLabelWidget().getLabelPaint().setTextSize(18);
+        //graficaSeñalesHistorica.getLegendWidget().setSize(new SizeMetrics(10, 
+        		//SizeLayoutType.ABSOLUTE, 500, SizeLayoutType.ABSOLUTE));
+        graficaSeñalesHistorica.getLegendWidget().setHeight(15.0f);
+        graficaSeñalesHistorica.position( graficaSeñalesHistorica.getLegendWidget(), 20,
+                XLayoutStyle.ABSOLUTE_FROM_RIGHT, 0, YLayoutStyle.ABSOLUTE_FROM_BOTTOM, AnchorPosition.RIGHT_BOTTOM);
+        graficaSeñalesHistorica.getLegendWidget().setWidth(0.7f);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		// Iniciamos la conexion bluetooth
+		AmarinoListenerConexionBT.onResume(this, this);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		// Finalizamos la conexion bluetooth
+		AmarinoListenerConexionBT.onPause(this, this);
+	}
+	
+	private void pintaDatosGrafica(Integer valor, int posicion) {
+		// Comprobamos antes si hemos superado el limite del historial (con probar una grafica vale)
+		if (listaDatosGraficaConcentracion.size() > TAMAÑO_HISTORICO) {
+			listaDatosGraficaConcentracion.removeFirst();
+		 	listaDatosGraficaRelajacion.removeFirst();
+		 	listaDatosGraficaDelta.removeFirst();
+		 	listaDatosGraficaTheta.removeFirst();
+		 	listaDatosGraficaLowAlpha.removeFirst();
+		 	listaDatosGraficaHighAlpha.removeFirst();
+		 	listaDatosGraficaLowBeta.removeFirst();
+		 	listaDatosGraficaHighBeta.removeFirst();
+		    listaDatosGraficaLowGamma.removeFirst();
+		 	listaDatosGraficaHighGamma.removeFirst();
+	    }
+		
+		switch(posicion) {
+			case 1:
+				datosSerieHistorica[0] = valor;
+				listaDatosGraficaConcentracion.addLast(datosSerieHistorica[0]);
+				datosGraficaConcentracion.setModel(listaDatosGraficaConcentracion, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				break;
+			case 2:
+				datosSerieHistorica[1] = valor;
+				listaDatosGraficaRelajacion.addLast(datosSerieHistorica[1]);
+				datosGraficaRelajacion.setModel(listaDatosGraficaRelajacion, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				break;
+			case 3:
+				datosSerieHistorica[2] = formateaValoresEEG(valor, posicion);
+				listaDatosGraficaDelta.addLast(datosSerieHistorica[2]);
+				datosGraficaDelta.setModel(listaDatosGraficaDelta, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				graficaSeñalesHistorica.redraw();
+				break;
+			case 4:
+				datosSerieHistorica[3] = formateaValoresEEG(valor, posicion);
+				listaDatosGraficaTheta.addLast(datosSerieHistorica[3]);
+				datosGraficaTheta.setModel(listaDatosGraficaTheta, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				break;
+			case 5:
+				datosSerieHistorica[4] = formateaValoresEEG(valor, posicion);
+				listaDatosGraficaLowAlpha.addLast(datosSerieHistorica[4]);
+				datosGraficaLowAlpha.setModel(listaDatosGraficaLowAlpha, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				break;
+			case 6:
+				datosSerieHistorica[5] = formateaValoresEEG(valor, posicion);
+				listaDatosGraficaHighAlpha.addLast(datosSerieHistorica[5]);
+				datosGraficaHighAlpha.setModel(listaDatosGraficaHighAlpha, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				break;
+			case 7:
+				datosSerieHistorica[6] = formateaValoresEEG(valor, posicion);
+				listaDatosGraficaLowBeta.addLast(datosSerieHistorica[6]);
+				datosGraficaLowBeta.setModel(listaDatosGraficaLowBeta, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				break;
+			case 8:
+				datosSerieHistorica[7] = formateaValoresEEG(valor, posicion);
+				listaDatosGraficaHighBeta.addLast(datosSerieHistorica[7]);
+				datosGraficaHighBeta.setModel(listaDatosGraficaHighBeta, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				break;
+			case 9:
+				datosSerieHistorica[8] = formateaValoresEEG(valor, posicion);
+				listaDatosGraficaLowGamma.addLast(datosSerieHistorica[8]);
+				datosGraficaLowGamma.setModel(listaDatosGraficaLowGamma, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				break;
+			case 10:
+				datosSerieHistorica[9] = formateaValoresEEG(valor, posicion);
+				listaDatosGraficaHighGamma.addLast(datosSerieHistorica[9]);
+				datosGraficaHighGamma.setModel(listaDatosGraficaHighGamma, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY);
+				graficaSeñalesHistorica.redraw();
+				break;
+		}
+	}
+	
+	// Metodos para formatear todas las señales EEG menos concentracion y relajacion (en la grafica de barras explicado)
+	private int formateaValoresEEG(Integer valor, int posicion) {
+		if(valor > valoresMaximosEEG[posicion-3]) {
+			valoresMaximosEEG[posicion-3] = valor;
+			// Añadimos 100 para que llegue al limite de la grafica
+			return 100;
+		} else {
+			// Regla de 3 para calcular el valor de 0 a 100 de la grafica
+			return (valor*100)/valoresMaximosEEG[posicion-3];
+		}
+	}
+	
+	public void newSignalValue(Integer value) {
+		switch(value) {
+		case 0:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_green);
+			break;
+		case 200:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_red);
+			break;
+		default:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_yellow);
+			break;
+	}
+	}
+	public void newConcentrationValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 1);
+	}
+	public void newRelaxValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 2);
+	}
+	public void newDeltaValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 3);
+	}
+	public void newThetaValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 4);
+	}
+	public void newLowAlphaValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 5);
+	}
+	public void newHighAlphaValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 6);
+	}
+	public void newLowBetaValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 7);
+	}
+	public void newHighBetaValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 8);
+	}
+	public void newLowGammaValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 9);
+	}
+	public void newHighGammaValue(String value) {
+		pintaDatosGrafica(Integer.valueOf(value), 10);
+	}	
+}

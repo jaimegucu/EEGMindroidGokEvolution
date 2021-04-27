@@ -1,0 +1,64 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.eeg_mindroid"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="15" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.CALL_PHONE"/>
+    
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/nombre_amplicacion"
+        android:theme="@style/AppTheme" >
+        
+        <!-- MENUS -->
+        <activity
+            android:name=".EEG_Mindroid"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EEG_Menu_Aplicaciones"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:screenOrientation="landscape" >
+        </activity>
+        
+        <!-- APLICACIONES -->
+        <activity
+            android:name=".Aplicacion_Marcar_Telefono"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:screenOrientation="landscape" >
+        </activity>
+        
+        <activity
+            android:name=".GraficaBarras"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".GraficaHistorica"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".DragonBall"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:screenOrientation="landscape" >
+        </activity>
+        <service
+            android:name=".BTService"
+            android:enabled="true"
+            android:label="Bluetooth" />
+            <!-- android:process="com.app.eeg_mindroid.BTService" --> 
+    </application>
+</manifest>

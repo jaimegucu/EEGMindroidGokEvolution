@@ -1,0 +1,275 @@
+package com.app.eeg_mindroid;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import at.abraxas.amarino.AmarinoIntent;
+
+// Interfaz para controlar los datos recibidos por bluetooth
+public class MindInterface extends BroadcastReceiver {
+
+	private static List<MindListener> listeners = new ArrayList<MindListener>();
+	
+	// Señales principales
+	private static Integer signal;
+	private static String concentration;
+	private static String relax;
+	
+	// Señales cerebrales
+	private static String delta;
+	private static String theta;
+	private static String lowAlpha;
+	private static String highAlpha;
+	private static String lowBeta;
+	private static String highBeta;
+	private static String lowGamma;
+	private static String highGamma;
+	
+	
+	private Activity context;
+	
+	public MindInterface(Activity context){
+		this.context = context;
+	}
+	
+	
+	public Integer getSignal() {
+		return signal;
+	}
+
+	public String getRelax() {
+		return relax;
+	}
+
+	public String getConcentration() {
+		return concentration;
+	}
+
+	public static String getDelta() {
+		return delta;
+	}
+
+
+	public static String getTheta() {
+		return theta;
+	}
+
+
+	public static String getLowAlpha() {
+		return lowAlpha;
+	}
+
+
+	public static String getHighAlpha() {
+		return highAlpha;
+	}
+
+
+	public static String getLowBeta() {
+		return lowBeta;
+	}
+
+
+	public static String getHighBeta() {
+		return highBeta;
+	}
+
+
+	public static String getLowGamma() {
+		return lowGamma;
+	}
+
+
+	public static String getHighGamma() {
+		return highGamma;
+	}
+
+
+	public void addListener(MindListener mindListener) {
+		listeners.add(mindListener);
+		if (listeners != null && !listeners.isEmpty())
+			context.registerReceiver(this, new IntentFilter(AmarinoIntent.ACTION_RECEIVED));
+	}
+
+	public void removeListener(MindListener mindListener) {
+		listeners.remove(mindListener);
+		if (listeners == null || listeners.isEmpty())
+			context.unregisterReceiver(this);
+	}
+	
+	private void launchNewSignal(Integer signal) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newSignalValue(signal);
+			}
+		}
+	}
+
+	private void launchNewRelax(String relax) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newRelaxValue(relax);
+			}
+		}
+	}
+
+	private void launchNewConcentration(String concentration) {
+		if (listeners != null && !listeners.isEmpty())
+			for (MindListener listener : listeners) {
+				listener.newConcentrationValue(concentration);
+			}
+	}
+	
+	private void launchNewDelta(String delta) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newDeltaValue(delta);
+			}
+		}
+	}
+	
+	private void launchNewTheta(String theta) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newThetaValue(theta);
+			}
+		}
+	}
+	
+	private void launchNewLowAlpha(String lowAlpha) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newLowAlphaValue(lowAlpha);
+			}
+		}
+	}
+	
+	private void launchNewHighAlpha(String highAlpha) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newHighAlphaValue(highAlpha);
+			}
+		}
+	}
+	
+	private void launchNewLowBeta(String lowBeta) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newLowBetaValue(lowBeta);
+			}
+		}
+	}
+	
+	private void launchNewHighBeta(String highBeta) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newHighBetaValue(highBeta);
+			}
+		}
+	}
+	
+	private void launchNewLowGamma(String lowGamma) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newLowGammaValue(lowGamma);
+			}
+		}
+	}
+	
+	private void launchNewHighGamma(String highGamma) {
+		if (listeners != null && !listeners.isEmpty()) {
+			for (MindListener listener : listeners) {
+				listener.newHighGammaValue(highGamma);
+			}
+		}
+	}
+		
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		String data = null;
+
+		// Esta cadena (que no se usa) simplemente muestra la direccion del
+		// Bluetooth desde que se ha
+		// enviado la informacion
+		// final String address =
+		// intent.getStringExtra(AmarinoIntent.EXTRA_DEVICE_ADDRESS);
+
+		// Es el tipo de dato que se ha añadido al intento
+		final int dataType = intent.getIntExtra(
+				AmarinoIntent.EXTRA_DATA_TYPE, -1);
+
+		// Esto comprueba que es String en Android y char[] en Arduino para
+		// que sean correctos los datos
+		if (dataType == AmarinoIntent.STRING_EXTRA) {
+			data = intent.getStringExtra(AmarinoIntent.EXTRA_DATA);
+
+			// Formato de los datos recibidos:
+			// signal strength, attention, meditation, delta, theta, low
+			// alpha, high alpha, low beta, high beta, low gamma, high gamma"
+			String[] datos = data.split(",");
+
+			if (data != null) {
+				signal = Integer.valueOf(datos[0]);
+				launchNewSignal(signal);
+				
+				// CAMBIARLO POR signal != 200 EN EL FUTURO PARA QUE NO ENVIE DATOS
+				// SI NO TIENE CALIDAD DE SEÑAL DISTINTA DE MALA
+				if(signal != 999) {
+					concentration = datos[1];
+					launchNewConcentration(concentration);
+					relax = datos[2];
+					launchNewRelax(relax);
+					delta = datos[3];
+					launchNewDelta(delta);
+					theta = datos[4];
+					launchNewTheta(theta);
+					lowAlpha = datos[5];
+					launchNewLowAlpha(lowAlpha);
+					highAlpha = datos[6];
+					launchNewHighAlpha(highAlpha);
+					lowBeta = datos[7];
+					launchNewLowBeta(lowBeta);
+					highBeta = datos[8];
+					launchNewHighBeta(highBeta);
+					lowGamma = datos[9];
+					launchNewLowGamma(lowGamma);
+					highGamma = datos[10];
+					launchNewHighGamma(highGamma);
+				// Si la señal es mala, todos los datos a 0
+				} else {
+					launchNewConcentration("0");
+					launchNewRelax("0");
+					launchNewDelta("0");
+					launchNewTheta("0");
+					launchNewLowAlpha("0");
+					launchNewHighAlpha("0");
+					launchNewLowBeta("0");
+					launchNewHighBeta("0");
+					launchNewLowGamma("0");
+					launchNewHighGamma("0");	
+				}
+			}
+		}
+	}
+	
+	interface MindListener {
+		public void newSignalValue(Integer value);
+		public void newConcentrationValue(String value);
+		public void newRelaxValue(String value);
+		
+		public void newDeltaValue(String value);
+		public void newThetaValue(String value);
+		public void newLowAlphaValue(String value);
+		public void newHighAlphaValue(String value);
+		public void newLowBetaValue(String value);
+		public void newHighBetaValue(String value);
+		public void newLowGammaValue(String value);
+		public void newHighGammaValue(String value);
+	}
+
+}

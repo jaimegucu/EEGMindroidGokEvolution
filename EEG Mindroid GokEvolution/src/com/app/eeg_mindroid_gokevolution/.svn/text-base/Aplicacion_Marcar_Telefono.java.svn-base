@@ -1,0 +1,395 @@
+package com.app.eeg_mindroid;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.app.eeg_mindroid.AmarinoListenerConexionBT.MindListenerBT;
+
+public class Aplicacion_Marcar_Telefono extends EEG_MenuVistaComun implements MindListenerBT {
+	private Button botonSalir;
+	
+	// Botones teclado telefonico
+	private Button botonCero;
+	private Button botonUno;
+	private Button botonDos;
+	private Button botonTres;
+	private Button botonCuatro;
+	private Button botonCinco;
+	private Button botonSeis;
+	private Button botonSiete;
+	private Button botonOcho;
+	private Button botonNueve;
+	private Button botonAsterisco;
+	private Button botonAlmohadilla;
+	private Button botonBajarFila1;
+	private Button botonBajarFila2;
+	private Button botonSubirFila2;
+	private Button botonSubirFila3;
+	private Button botonInicio;
+	private Button botonFinal;
+	private Button botonBorrar;
+	private Button botonLlamar;
+	
+	// Aqui se escribira el numero de tlf
+	private EditText edTextIntroducirTlf;
+	
+	// Cadena con el numero de tlf
+	private String numeroTlf;
+	
+	
+	private List<Button> listaBotones;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// Pon el setContenView primero para que se puedan cargar todas las vistas bien
+		setContentView(R.layout.aplicacion_marcar_telefono);
+        super.onCreate(savedInstanceState);
+        
+        botonSalir = (Button) findViewById(R.id.btn_marcar_tlf_salir);
+        botonCero = (Button) findViewById(R.id.btn_marcar_tlf_cero);
+        botonUno = (Button) findViewById(R.id.btn_marcar_tlf_uno);
+        botonDos = (Button) findViewById(R.id.btn_marcar_tlf_dos);
+        botonTres = (Button) findViewById(R.id.btn_marcar_tlf_tres);
+        botonCuatro = (Button) findViewById(R.id.btn_marcar_tlf_cuatro);
+        botonCinco = (Button) findViewById(R.id.btn_marcar_tlf_cinco);
+        botonSeis = (Button) findViewById(R.id.btn_marcar_tlf_seis);
+        botonSiete = (Button) findViewById(R.id.btn_marcar_tlf_siete);
+        botonOcho = (Button) findViewById(R.id.btn_marcar_tlf_ocho);
+        botonNueve = (Button) findViewById(R.id.btn_marcar_tlf_nueve);
+        botonAsterisco = (Button) findViewById(R.id.btn_marcar_tlf_asterisco);
+        botonAlmohadilla = (Button) findViewById(R.id.btn_marcar_tlf_almohadilla);
+        botonBajarFila1 = (Button) findViewById(R.id.btn_marcar_tlf_bajar_fila1);
+        botonBajarFila2 = (Button) findViewById(R.id.btn_marcar_tlf_bajar_fila2);
+        botonSubirFila2 = (Button) findViewById(R.id.btn_marcar_tlf_subir_fila2);
+        botonSubirFila3 = (Button) findViewById(R.id.btn_marcar_tlf_subir_fila3);
+        botonInicio = (Button) findViewById(R.id.btn_marcar_tlf_inicio);
+        botonFinal = (Button) findViewById(R.id.btn_marcar_tlf_final);
+        botonBorrar = (Button) findViewById(R.id.btn_marcar_tlf_borrar);
+        botonLlamar = (Button) findViewById(R.id.btn_marcar_tlf_llamar);
+        edTextIntroducirTlf = (EditText) findViewById(R.id.edtxt_marcar_tlf_introducir);
+        
+        numeroTlf = "";
+        
+        // CAMBIAR AL EEG_MENUVISTACOMUN
+        listaBotones = new ArrayList<Button>();
+        
+        // Esto es para que si la aplicacion no se ha iniciado nunca que NO ponga la seleccion en el primer boton
+        //listaBotones.get(indiceBotonSeleccionado).setPressed(false);
+        
+        // Click en boton Salir
+        botonSalir.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				finish();
+			}
+		});
+        
+        botonCero.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "0";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonUno.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "1";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonDos.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "2";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonTres.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "3";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonCuatro.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "4";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonCinco.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "5";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonSeis.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "6";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonSiete.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "7";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonOcho.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "8";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonNueve.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "9";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonAsterisco.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "*";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonAlmohadilla.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				numeroTlf += "#";
+				edTextIntroducirTlf.setText(numeroTlf);
+			}
+		});
+        
+        botonBorrar.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if(!numeroTlf.equals("")) {
+					numeroTlf = numeroTlf.substring(0, numeroTlf.length()-1);
+					edTextIntroducirTlf.setText(numeroTlf);
+				}
+			}
+		});
+        
+        botonLlamar.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent llamar = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + numeroTlf.trim()));
+				startActivity(llamar);
+			}
+		});
+	}
+	
+	@Override
+    public void onResume() {
+    	super.onResume();
+    	// Iniciamos la conexion bluetooth
+    	AmarinoListenerConexionBT.onResume(this, this);
+    	
+    	// Reiniciamos el contador de segundos, la posicion del boton seleccionado, la barra de seleccion y 
+    	// concentracion
+    	indiceBotonSeleccionado = 0;
+    	//listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+    	contadorSegundosSeleccion = SEGUNDOS_SELECCION;
+    	nivelBarraSeleccion = 0;
+    	nivelBarraConcentracion = 0;
+    	
+    	// Registramos el Receiver del porcentaje de bateria
+        //this.registerReceiver(this.porcentajeBateriaReceiver, 
+        	    //new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+    }
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		// Finalizamos la conexion bluetooth
+		AmarinoListenerConexionBT.onPause(this, this);
+		// Desregistramos el Receiver del porcentaje de bateria
+        //this.unregisterReceiver(porcentajeBateriaReceiver);
+		
+		// Reiniciamos el contador de segundos
+    	indiceBotonSeleccionado = 0;
+    	
+    	// Hacemos esto para que la primera vez que entremos no este seleccionado el primer boton
+    	// hasta que no se haya conectado por primera vez
+    	//if(!aplicacionIniciada)
+    		//listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+    	
+    	aplicacionIniciada = true;
+    	
+    	// Reiniciamos la posicion del boton seleccionado, la barra de seleccion y 
+    	// ponemos la seleccion en el primer boton
+    	contadorSegundosSeleccion = SEGUNDOS_SELECCION;
+    	nivelBarraSeleccion = 0;
+    	nivelBarraConcentracion = 0;
+	}
+	
+	// VER SI ESTE MENU SE PUEDE PASAR AL COMUN
+	
+	// Este metodo va aqui porque cada menu tendra sus propios botones
+    /*protected void seleccionBoton() {
+    	// Si la señal de conexion es 0 (señal correcta) que haga su funcion
+    	if(nivelSeñalConexion == 0) {
+    		if(nivelBarraConcentracion >= 50) {
+        		if(nivelBarraSeleccion == 0) {
+        			nivelBarraSeleccion = 25;
+        			progressBarSeleccion.setProgress(nivelBarraSeleccion);
+        		} else if(nivelBarraSeleccion == 25) {
+        			nivelBarraSeleccion = 50;
+        			progressBarSeleccion.setProgress(nivelBarraSeleccion);
+        			
+        		} else if(nivelBarraSeleccion == 50){
+        			nivelBarraSeleccion = 75;
+        			progressBarSeleccion.setProgress(nivelBarraSeleccion);
+        		} else {
+        			nivelBarraSeleccion = 100;
+        			progressBarSeleccion.setProgress(nivelBarraSeleccion);
+        			// Hago una pausa para que se vea la barra en  azul un tiempo antes de ir a la seleccion
+        			try {
+    					Thread.sleep(500);
+    				} catch (InterruptedException e) {
+    					e.printStackTrace();
+    				}
+        			
+        			// Dejo el nivel de la barra de seleccion a 0 justo antes de entrar en otra opcion
+        			nivelBarraSeleccion = 0;
+        			
+        			// Ponemos en true esto para que NO pinte la aplicacion
+        			aplicacionIniciada = true;
+        			
+        			switch(indiceBotonSeleccionado) {
+        				case 0:
+        					Intent intentBotonMenuAplicaciones = new Intent(Aplicacion_Marcar_Telefono.this, EEG_Menu_Aplicaciones.class);
+        					startActivity(intentBotonMenuAplicaciones);
+        					break;
+        				case 1:
+        					Intent intentBotonGraficaHistorica = new Intent(Aplicacion_Marcar_Telefono.this, GraficaHistorica.class);
+        					startActivity(intentBotonGraficaHistorica);
+        					break;
+        				case 2:
+        					Intent intentBotonDragonBall = new Intent(Aplicacion_Marcar_Telefono.this, DragonBall.class);
+        					startActivity(intentBotonDragonBall);
+        					break;
+        				case 3:
+        					break;
+        				case 4:
+        					finish();
+        					break;
+        			}
+        		}
+        	} else {
+        		// Si el nivel de concentracion es < 50, la barra de seleccion bajara tambien
+        		if(nivelBarraSeleccion == 75)
+        			nivelBarraSeleccion = 50;
+        		else if(nivelBarraSeleccion == 50)
+        			nivelBarraSeleccion = 25;
+        		else if(nivelBarraSeleccion == 25)
+        			nivelBarraSeleccion = 0;
+        		else
+        			nivelBarraSeleccion = 0;
+        		
+        		progressBarSeleccion.setProgress(nivelBarraSeleccion);
+        		
+        		// Mientras el contador NO sea cero, dejamos marcado el boton
+        		if(contadorSegundosSeleccion != 0) {
+        			listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+        			contadorSegundosSeleccion--;
+        		} else {
+        			// Reiniciamos contador de segundos
+        			contadorSegundosSeleccion = SEGUNDOS_SELECCION;
+        			// Ponemos en false la antigua seleccion
+        			listaBotones.get(indiceBotonSeleccionado).setPressed(false);
+        			indiceBotonSeleccionado++;
+        			
+        			// Si llegamos al final de la lista, volvemos al inicio
+        			if(indiceBotonSeleccionado == listaBotones.size())
+        				indiceBotonSeleccionado = 0;
+        			
+        			// Ponemos en true la nueva seleccion
+        			listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+        		}
+        	}
+    		
+    		textoSegundosSeleccion.setText(contadorSegundosSeleccion + "s");
+    	}
+    	
+	}*/
+
+	public void newSignalValue(Integer value) {
+		switch(value) {
+		case 0:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_green);
+			break;
+		case 200:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_red);
+			//listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+			nivelBarraSeleccion = 0;
+			progressBarSeleccion.setProgress(nivelBarraSeleccion);
+			break;
+		default:
+			imagenCalidadConexion.setImageResource(R.drawable.circle_yellow);
+			//listaBotones.get(indiceBotonSeleccionado).setPressed(true);
+			nivelBarraSeleccion = 0;
+			progressBarSeleccion.setProgress(nivelBarraSeleccion);
+			break;
+		}
+		
+		nivelSeñalConexion = value;
+	}
+
+	public void newConcentrationValue(String value) {
+		progressBarConcentracion.setProgress(Integer.valueOf(value));
+		nivelBarraConcentracion = Integer.valueOf(value);
+		seleccionBoton();
+	}
+
+	public void newRelaxValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newDeltaValue(String value) {
+		// TODO Auto-generated method stub
+		//seleccionBoton();
+	}
+
+	public void newThetaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newLowAlphaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newHighAlphaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newLowBetaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newHighBetaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+
+	public void newLowGammaValue(String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void newHighGammaValue(String value) {
+		// TODO Auto-generated method stub
+	}
+}

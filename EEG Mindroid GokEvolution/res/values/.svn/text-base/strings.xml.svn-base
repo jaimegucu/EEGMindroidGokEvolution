@@ -1,0 +1,126 @@
+<resources>
+	
+    <!-- VARIOS -->
+    <string name="nombre_amplicacion">EEG Mindroid</string>
+	<string name="bluetooth">Bluetooth</string>
+    <string name="title_activity_eeg__mindroid">EEG Mindroid</string>
+    <string name="calidad_conexion">Calidad Conexión</string>
+	
+    <!-- TIPOS DE SEÑALES EN GRAFICA E INICIALES -->
+    <string name="eeg_señal">Señal</string>
+    <string name="eeg_concentracion">Concentración</string>
+    <string name="eeg_relajacion">Relajación</string>
+    <string name="eeg_delta">Delta</string>
+    <string name="eeg_theta">Theta</string>
+    <string name="eeg_low_alpha">Alfa Bajo</string>
+    <string name="eeg_high_alpha">Alfa Alto</string>
+    <string name="eeg_low_beta">Beta Bajo</string>
+    <string name="eeg_high_beta">Beta Alto</string>
+    <string name="eeg_low_gamma">Gamma Bajo</string>
+    <string name="eeg_high_gamma">Gamma Alto</string>
+
+    <string name="eeg_concentracion_iniciales">CON</string>
+    <string name="eeg_relajacion_iniciales">REL</string>
+    <string name="eeg_delta_iniciales">DEL</string>
+    <string name="eeg_theta_iniciales">THE</string>
+    <string name="eeg_low_alpha_iniciales">ALB</string>
+    <string name="eeg_high_alpha_iniciales">ALA</string>
+    <string name="eeg_low_beta_iniciales">BEB</string>
+    <string name="eeg_high_beta_iniciales">BEA</string>
+    <string name="eeg_low_gamma_iniciales">GAB</string>
+    <string name="eeg_high_gamma_iniciales">GAA</string>
+    
+    <!-- NOMBRE TITULO Y EJE Y DE LAS GRAFICAS -->
+    <!-- El \u0020 es para introducir otro espacio en blanco -->
+    <string name="titulo_grafica_barras">ELECTROENCEFALOGRAMA\u0020 (EEG)</string>
+    <string name="titulo_grafica_historica">HISTORICO\u0020 ELECTROENCEFALOGRAMA\u0020 (EEG)</string>
+    <string name="valores_señales_graficas">VALORES\u0020 SEÑALES\u0020 EEG</string>
+    <string name="segundos_grafica_historica">SEGUNDOS</string>
+    
+    <!-- MENSAJES DE ERROR -->
+    <string name="error_bt_no_encontrado">No se ha encontrado ningún dispositivo bluetooth</string>
+    
+    <!-- NOMBRES BOTONES MENU PRINCIPAL-->
+    <string name="btn_salir">Salir</string>
+    <string name="btn_grafica_barras">Gráfica Barras</string>
+    <string name="btn_grafica_historica">Gráfica Histórica</string>
+    <string name="btn_dragon_ball">Dragon Ball</string>
+    
+    <!-- MENSAJES AMARINO -->
+    <string name="instructions">This example shows how you can control your Arduino with a simple interface.</string>
+
+    <string name="device_address">Set BT Device Address</string>
+    <string name="set_device_address">Please enter the address of your Bluetooth module on your Arduino.</string>
+    <string name="device_address_format_error">Address needs to be in the following format: xx:xx:xx:xx:xx:xx\n\ne.g. 00:06:66:03:73:7B</string>
+    
+    <string name="monitoring">Monitoring</string>
+    <string name="add_bt_device">Add BT Device</string>
+    <string name="add_event">Add Event</string>
+	<string name="settings">Settings</string>
+	<string name="no_devices">First you have to add a new Bluetooth device.</string>
+	<string name="no_events">No events selected!</string>
+	<string name="connect">Connect</string>
+	<string name="connected">Connected</string>
+	<string name="disconnect">Disconnect</string>
+	<string name="disconnected">Disconnected</string>
+	<string name="connecting">Connecting</string>
+	<string name="remove">Remove</string>
+	<string name="remove_all">Remove All</string>
+	<string name="force_disable_all">Force Disable All</string>
+	<string name="enable">Enable</string>
+	<string name="disable">Disable</string>
+	<string name="disabled">disabled</string>
+	<string name="force_enable">Force Enable</string>
+	<string name="force_disable">Force Disable</string>
+	<string name="no_plugins_installed">There are no Amarino plug-ins installed on your phone.
+	\n\nInstall the AmarinoPlugInBundle to get some events to start with.</string>
+	<string name="plugin_info_msg">This is a plug-in for Amarino 2.0 and not a standalone application.
+	\n\nYou can add this plug-in to Amarino, by selecting \'Add Event\' within Amarino</string>
+	
+
+	<string name="flag_btn">Flag: %s</string>
+	
+	<!-- Context menu MainScreen -->
+	<string name="show_events">Show Events</string>
+	<string name="remove_device">Remove Device</string>
+	<string name="menu_about">About</string>
+
+	<!-- Service messages -->
+	<string name="service_started_title">background service started</string>
+	<string name="service_notify_text">Amarino is running</string>
+	<string name="service_active_connections">Active connections: %s</string>
+	<string name="service_no_active_connections">No active connections</string>
+	<string name="service_connecting_to">Connecting to %s</string>
+	<string name="service_connection_to_failed">Connection failed.</string>
+	<string name="service_connected_to">Connected to %s</string>
+	<string name="service_disconnected_from">Disconnected from %s</string>
+	<string name="service_pairing_request">Pairing request for %s\n\nPull down your status bar to enter the pin.</string>
+	<string name="service_address_invalid">Given address [%s] is invalid. Must be of form xx:xx:xx:xx:xx:xx</string>
+	<string name="service_message_to_send">message to send: %s</string>
+	<string name="service_ready_to_shutdown">service ready to shutdown</string>
+	
+	<!-- Titles -->
+	<string name="monitoring_title">"Monitoring"</string>
+	<string name="settings_title">"Settings"</string>
+	
+	<string name="about_msg">Amarino 2.0 - A prototyping platform for Android and Arduino
+	\n\n\u00A9 2010 by Bonifaz Kaufmann
+	\n\nhttp://www.amarino-toolkit.net
+	
+	\n\nThanks to Stefano Sanna and Emanuele Di Saverio, since Amarino uses
+	their Android Bluetooth API which can be found at
+	\nhttp://code.google.com/p/android-bluetooth/</string>
+	
+	<string name="about_changelog"><b>Release Notes</b>
+	\n0.55
+	\n - fixed bug in MessageBuilder. Flags were converted to numbers in some cases.
+	\n0.53
+	\n - fixed bug in Amarino API (in Amarino.java), device address was not sent when using sendDataToArduino() function
+	\n\n0.52
+	\n - added fall back when UUID does not work, it will try to use the good old port 1
+	\n\n0.5
+	\n - uses UUID (instead of always port 1) to determine which port to use when connecting to a Bluetooth module
+	\n - added release notes dialog to show up when a new Amarino version has been installed
+	\n - shows a message when no plug-ins are installed and user tries to add an event
+	</string>
+</resources>

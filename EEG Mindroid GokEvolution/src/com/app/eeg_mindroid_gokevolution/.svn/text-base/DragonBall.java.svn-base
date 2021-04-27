@@ -1,0 +1,11 @@
+package com.app.eeg_mindroid;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class DragonBall extends Activity {
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+        setContentView(R.layout.dragon_ball);
+	}
+}
